@@ -11,6 +11,8 @@ Kattankulathur, Tamil Nadu, India<br>
 
 [Read the research paper and v0.2 follow-up (PDF)](paper/veritas.pdf) · [Run in Google Colab](https://colab.research.google.com/github/Rahulchaube1/veritas/blob/v0.2.0/notebooks/veritas.ipynb) · [Download the software](https://github.com/Rahulchaube1/veritas/releases/tag/v0.2.0) · [Reproduce the results](docs/reproduce.md)
 
+[Read the technical article on copied search results](docs/how-copies-change-a-verdict.md) · [Report an independent reproduction](https://github.com/Rahulchaube1/veritas/issues/1) · [Download the arXiv submission source](paper/submission/README.md)
+
 ## The problem in one example
 
 A harbor register says a ferry carries **40 passengers**. An operator notice says **41**, and eight digests copy that notice. Counting pages gives nine votes to one side. A reviewer still has two competing observations. VERITAS groups dependent documents and caps each group’s contribution to each side. If an old register is present, the requested date also determines whether that register can vote.

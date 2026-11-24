@@ -11,6 +11,7 @@ from collections import Counter
 from pathlib import Path
 
 import numpy as np
+from rationale_spans import matching_sentences
 from scifact import corpus, rows, write
 from scipy.stats import binomtest
 
@@ -54,17 +55,12 @@ def evaluate(variant: str, out: Path):
         citation_spans = []
         for idx in decision.citations:
             e = result.evidence[idx]
-            lines = engine.docs[e.doc_id].text.splitlines()
+            text = engine.docs[e.doc_id].text
             wanted = {"support": "SUPPORT", "contradict": "CONTRADICT"}[e.stance]
-            gold_sentences = sorted(
-                {
-                    j
-                    for span in refs.get(e.doc_id, [])
-                    if span["label"] == wanted
-                    for j in span["sentences"]
-                    if e.passage in lines[j]
-                }
-            )
+            eligible = {
+                j for ref in refs.get(e.doc_id, []) if ref["label"] == wanted for j in ref["sentences"]
+            }
+            gold_sentences = matching_sentences(text, e.start, e.end, eligible)
             if engine.docs[e.doc_id].text[e.start : e.end] != e.passage:
                 raise ValueError(f"Invalid citation offsets for claim {row['id']}")
             citation_spans.append(
@@ -145,13 +141,11 @@ def audit_spans(path: Path):
             start, end = cite["start"], cite["end"]
             if doc_id not in record["doc_ids"] or not 0 <= start < end <= len(text):
                 raise ValueError(f"Invalid source span for {record['id']}")
-            passage = text[start:end]
-            lines = text.splitlines()
             stance = {"support": "SUPPORT", "contradict": "CONTRADICT"}[cite["stance"]]
             eligible = {
                 i for a in gold[record["id"]].get(doc_id, []) if a["label"] == stance for i in a["sentences"]
             }
-            aligned_lines = sorted(i for i in eligible if passage in lines[i])
+            aligned_lines = matching_sentences(text, start, end, eligible)
             if cite["gold_sentence_matches"] != aligned_lines:
                 raise ValueError(f"Citation alignment differs for {record['id']}")
             aligned += bool(aligned_lines)

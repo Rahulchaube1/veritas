@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VERITAS evidence lab</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f7f6f1;color:#19392f;font:17px/1.5 "Source Sans 3",system-ui,sans-serif}main{max-width:900px;margin:auto;padding:38px 22px}h1,h2{font-family:"Source Serif 4",Georgia,serif;line-height:1.1}h1{font-size:clamp(38px,6vw,66px);font-weight:500;margin:0 0 14px}h2{font-size:24px;margin:0 0 10px}p{max-width:68ch}.controls{display:grid;gap:.65rem;padding:20px;background:#e9eee6;border:1px solid #afc0af}input{accent-color:#28533d}input[type=range]{width:min(19em,100%);display:block}.results{margin:24px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.card{border:1px solid #b3beb4;padding:16px;background:#fff}.card strong{font:600 24px Georgia,serif;display:block}small{display:block}table{border-collapse:collapse;width:100%;font-size:15px}td,th{text-align:left;border-bottom:1px solid #cdd6cb;padding:8px 6px;overflow-wrap:anywhere}a{color:#176149}footer{margin-top:26px}#status:empty{display:none}
+</style>
+<main>
+<h1>How many reports count?</h1>
+<p>A fictional register says a ferry carries 40 passengers. A second report says 41. Add copies of the second report and see which sources reach the verifier.</p>
+<div class="controls"><label>Pages repeating the 41-passenger claim: <output id="amount">8</output><input id="copies" type="range" min="1" max="16" value="8"></label>
+<label><input id="limited" type="checkbox"> Inspect only the first two documents</label>
+<label><input id="diverse" type="checkbox"> Prioritize distinct document texts before inspection</label></div>
+<p id="status" role="status"></p><div class="results" id="cards" aria-live="polite"></div>
+<h2>Evidence examined</h2><table><thead><tr><th>Document</th><th>Passage</th><th>Assigned group</th></tr></thead><tbody id="rows"></tbody></table>
+<footer>Rahul Chaube · VERITAS v0.2.0 · <a href="https://github.com/Rahulchaube1/veritas/blob/v0.2.0/docs/verification-v0.2.md">Read the study</a> · <a href="https://github.com/Rahulchaube1/veritas/issues/1">Report a reproduction</a></footer>
+</main><script>
+const byId = id => document.getElementById(id);
+let revision = 0;
+function node(tag, content) { const e = document.createElement(tag); e.textContent = content; return e; }
+async function refresh() {
+ const request = ++revision;
+ byId('amount').value = byId('copies').value;
+ const params = new URLSearchParams({copies:byId('copies').value,limited:byId('limited').checked,diverse:byId('diverse').checked});
+ byId('status').textContent = 'Checking evidence…';
+ try {
+  const response = await fetch('experiment?' + params); if (!response.ok) throw Error();
+  const data = await response.json(); if(request !== revision) return;
+  byId('cards').replaceChildren(); byId('rows').replaceChildren();
+  for(const [key,label] of [['grouped','Grouped by source'],['ordinary','One vote per page']]) {
+   const r=data[key], card=document.createElement('section'); card.className='card';
+   card.append(node('h2',label),node('strong',r.verdict),node('small','Evidence balance '+r.balance+' · '+r.examined+' documents inspected'));
+   byId('cards').append(card);
+  }
+  for(const e of data.grouped.evidence) {
+   const row=document.createElement('tr'); row.append(node('td',e.document),node('td',e.text),node('td',e.group)); byId('rows').append(row);
+  }
+  byId('status').textContent='';
+ } catch {if(request === revision) byId('status').textContent='Could not load the experiment. Change a control or refresh to retry.';}
+}
+document.querySelectorAll('input').forEach(e=>e.addEventListener('change',refresh)); byId('copies').addEventListener('input',()=>byId('amount').value=byId('copies').value);refresh();
+</script></html>

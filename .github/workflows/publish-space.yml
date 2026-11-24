@@ -1,0 +1,25 @@
+name: Publish Hugging Face Space
+on: workflow_dispatch
+permissions:
+  contents: read
+jobs:
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare the fixed CPU demo and the published v0.2.0 wheel
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/veritas-space"
+          cp space/{README.md,Dockerfile,app.py,index.html} "$RUNNER_TEMP/veritas-space/"
+          gh release download v0.2.0 --pattern 'veritas_evidence-0.2.0-py3-none-any.whl' --dir "$RUNNER_TEMP/veritas-space"
+          python -m pip install 'huggingface_hub>=1,<2'
+      - name: Publish to the author's Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: python scripts/publish_space.py "$RUNNER_TEMP/veritas-space"
