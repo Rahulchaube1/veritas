@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "Cite this repository and version when using the software."
+title: "VERITAS — Verified Evidence Retrieval with Independent Temporal Attribution and Scoring"
+authors:
+  - family-names: Chaube
+    given-names: Rahul
+version: 0.1.0
+date-released: 2026-11-24
+license: MIT
+repository-code: "https://github.com/Rahulchaube1/veritas"

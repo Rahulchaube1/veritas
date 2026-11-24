@@ -1,0 +1,14 @@
+{
+  "train": {
+    "pairs": 1307,
+    "log_loss": 0.13747463667449378
+  },
+  "validation": {
+    "pairs": 204,
+    "log_loss": 0.1096817129951279
+  },
+  "calibration": {
+    "pairs": 348,
+    "log_loss": 0.1304978977221601
+  }
+}

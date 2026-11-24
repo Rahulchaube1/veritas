@@ -1,0 +1,7 @@
+# Computational cost
+
+Let P be input token count, N document count, d embedding dimension, L the retrieval prefix length, B the number of rounds and M the number of examined documents. Sparse indexing and shingle extraction scale with their emitted postings. BM25 accumulates scores over query postings. Sorting scored candidates costs up to O(N log N). The default latent-vector search scans N vectors with O(Nd) arithmetic and sorts the scores. Randomized truncated SVD is rebuilt after updates and can dominate the first search.
+
+The neural backend stores document vectors plus an HNSW graph. Approximate search quality and runtime depend on graph structure and search settings. No worst-case logarithmic retrieval guarantee is assumed. The cross-encoder reranks a bounded candidate pool of max(32,L), capped at N. Verification can classify up to five passages per newly examined document. The neural experiment measures index warm-up separately from search latency.
+
+For graph construction, let c(g) be the length of the inverted list for shingle or key g. Candidate generation can cost O(Σg c(g)²), plus set comparisons. Common boilerplate can make a bounded batch quadratic. Graphs are rebuilt per round. The application loads one bounded corpus into memory and serializes writers and searches. Horizontal scalability and a distributed index have not been measured. [HNSW](https://arxiv.org/abs/1603.09320)

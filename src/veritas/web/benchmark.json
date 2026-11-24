@@ -1,0 +1,26 @@
+{
+  "description": "SciFact \u00b7 5,183 abstracts \u00b7 188 evidence-labeled development claims",
+  "rows": [
+    [
+      "BM25",
+      "0.930",
+      "0.816"
+    ],
+    [
+      "Character LSA",
+      "0.478",
+      "0.313"
+    ],
+    [
+      "Rank fusion",
+      "0.864",
+      "0.640"
+    ],
+    [
+      "Fusion + learned relevance",
+      "0.863",
+      "0.673"
+    ]
+  ],
+  "controlled": "On 360 synthetic test cases, the full rule pipeline matched 83.3% of evidence labels. The rules abstained on all 300 real SciFact claims."
+}

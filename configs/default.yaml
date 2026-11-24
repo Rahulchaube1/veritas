@@ -1,0 +1,4 @@
+database: .cache/veritas.db
+page_size: 4
+max_steps: 5
+corpus_limit: 10000

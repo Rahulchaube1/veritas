@@ -1,0 +1,11 @@
+:root{color-scheme:light;--ink:#192923;--line:#bdc9c1;--green:#185941}*{box-sizing:border-box}
+body{background:#f7f8f3;color:var(--ink);margin:0;font:16px/1.55 "Source Sans 3",Arial,sans-serif}
+header,footer{padding:20px max(5vw,calc((100vw - 1020px)/2));border-bottom:1px solid var(--line)}
+header,nav,.controls{display:flex;gap:22px;align-items:center;justify-content:space-between}
+nav{font-size:.9rem}.brand{font:700 1.2rem Georgia,serif;letter-spacing:.13em}a{color:var(--green);text-underline-offset:4px}.brand{text-decoration:none}
+main{max-width:1020px;margin:auto;padding:50px 24px}h1,h2,h3{font-family:"Source Sans 3",Arial,sans-serif;line-height:1.15;margin:0 0 16px}h1{font-family:"Source Serif 4",Georgia,serif;font-size:clamp(42px,6vw,68px);font-weight:500;letter-spacing:-.045em}h2{font-size:1.8rem}h3{font-size:1.15rem;margin-top:24px}
+p{max-width:78ch}form,#result{background:white;border:1px solid var(--line);border-radius:8px;padding:24px;margin-top:24px}label{display:block;font-size:14px;font-weight:600}
+textarea,input,select,button{font:inherit;padding:.62em .8em;border:1px solid #9dab9f;border-radius:4px;background:white;color:var(--ink);width:100%;margin-top:5px}
+textarea{font-size:1.12rem;resize:vertical}.controls{align-items:end;justify-content:flex-start;flex-wrap:wrap;gap:12px;margin:12px 0}.controls input[type=number]{width:6.5em}.controls button{margin-left:auto;width:auto;background:var(--green);color:white;cursor:pointer}button:disabled{opacity:.6}summary{cursor:pointer;font-size:.88rem}details input{max-width:24em}
+#benchmarks{margin-top:52px;padding-top:24px;border-top:1px solid var(--line)}article{border-left:3px solid #66816d;padding:4px 15px;margin-bottom:18px}article p{margin:.35rem 0}small,#stats{color:#4b6153}table{border-collapse:collapse;width:100%;margin:12px 0 30px}td,th{padding:8px 10px;text-align:left;border-bottom:1px solid var(--line)}footer{margin-top:4rem;font-size:.85rem;border-top:1px solid var(--line)}:focus-visible{outline:3px solid #dc8c2f;outline-offset:2px}
+@media(max-width:560px){header,nav{gap:12px}main{padding:30px 14px}form,#result{padding:16px}.controls button{width:100%}}

@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VERITAS · Evidence search</title>
+<link rel="stylesheet" href="/assets/style.css"><script src="/assets/ui.js" defer></script></head>
+<body><header><a href="/" class="brand">VERITAS</a><nav><a href="#search">Search</a><a href="#benchmarks">Benchmarks</a><a href="/docs">API</a></nav></header>
+<main><section id="search"><h1>Evidence search</h1><p>Check a factual claim against your indexed documents. Read the passages behind the verdict.</p>
+<form id="form"><label for="query">Claim or question</label><textarea id="query" maxlength="1600" required rows="2" placeholder="Neptune is the eighth and most distant planet in our solar system."></textarea>
+<div class="controls"><label>Mode<select id="mode"><option>Standard</option><option>Deep verification</option></select></label><label>Search steps<input id="steps" type="number" min="1" max="10" value="3"></label><label>As of<input type="date" id="date"></label><button type="submit" id="submit">Check evidence</button></div>
+<details><summary>API access</summary><label>Bearer token<input id="token" type="password" autocomplete="off"></label></details></form>
+<p role="status" id="status"></p><section id="result" hidden><h2 id="verdict"></h2><p id="answer"></p><p id="stats"></p><h3>Retrieved passages</h3><div id="evidence"></div><h3>Source dependencies</h3><div id="edges"></div></section></section>
+<section id="benchmarks"><h2>Benchmark results</h2><p id="bench-status">Loading recorded measurements…</p><div id="tables"></div></section></main>
+<footer>Independent research project founded by Rahul Chaube</footer></body></html>

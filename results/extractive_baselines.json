@@ -1,0 +1,37 @@
+{
+  "bm25": {
+    "queries": 300,
+    "emitted": 300,
+    "selected_gold_passages": 44,
+    "rationale_alignment": 0.14666666666666667,
+    "retrieval_calls": 300
+  },
+  "dense": {
+    "queries": 300,
+    "emitted": 300,
+    "selected_gold_passages": 17,
+    "rationale_alignment": 0.056666666666666664,
+    "retrieval_calls": 300
+  },
+  "hybrid": {
+    "queries": 300,
+    "emitted": 300,
+    "selected_gold_passages": 32,
+    "rationale_alignment": 0.10666666666666667,
+    "retrieval_calls": 300
+  },
+  "hybrid_verified": {
+    "queries": 300,
+    "emitted": 0,
+    "selected_gold_passages": 0,
+    "rationale_alignment": null,
+    "retrieval_calls": 300
+  },
+  "separate_search": {
+    "queries": 300,
+    "emitted": 0,
+    "selected_gold_passages": 0,
+    "rationale_alignment": null,
+    "retrieval_calls": 600
+  }
+}

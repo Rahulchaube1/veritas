@@ -1,0 +1,25 @@
+name: Research checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    env:
+      OMP_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -c configs/constraints.txt '.[dev]' bandit
+      - run: ruff check . && ruff format --check .
+      - run: mypy src/veritas
+      - run: pytest --cov=veritas
+      - run: bandit -q -r src/veritas -lll
+      - run: python experiments/controlled.py
+      - run: python -m build
+      - run: docker build -t veritas-ci .

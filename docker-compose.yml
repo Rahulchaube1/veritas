@@ -1,0 +1,12 @@
+services:
+  veritas:
+    build: .
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      VERITAS_TOKEN: ${VERITAS_TOKEN:?Set a private bearer token of at least 24 characters}
+    volumes:
+      - veritas-index:/app/.cache
+    mem_limit: 2g
+volumes:
+  veritas-index:

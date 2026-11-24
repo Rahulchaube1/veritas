@@ -1,0 +1,4 @@
+database: .cache/neural.db
+model_dir: .cache/models
+page_size: 4
+max_steps: 5

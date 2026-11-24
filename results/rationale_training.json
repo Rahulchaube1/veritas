@@ -1,0 +1,8 @@
+{
+  "fit_pairs": 8684,
+  "validation_pairs": 2026,
+  "validation_average_precision": 0.22840654445281894,
+  "threshold": 0.15000000000000002,
+  "validation_precision": 0.3723404255319149,
+  "validation_recall": 0.2892561983471074
+}

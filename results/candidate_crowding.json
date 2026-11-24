@@ -1,0 +1,107 @@
+[
+  {
+    "copies": 1,
+    "budget": 1,
+    "verdict": "conflict",
+    "examined": 2,
+    "steps": 1
+  },
+  {
+    "copies": 1,
+    "budget": 2,
+    "verdict": "conflict",
+    "examined": 2,
+    "steps": 1
+  },
+  {
+    "copies": 1,
+    "budget": 5,
+    "verdict": "conflict",
+    "examined": 2,
+    "steps": 1
+  },
+  {
+    "copies": 2,
+    "budget": 1,
+    "verdict": "refuted",
+    "examined": 2,
+    "steps": 1
+  },
+  {
+    "copies": 2,
+    "budget": 2,
+    "verdict": "conflict",
+    "examined": 3,
+    "steps": 2
+  },
+  {
+    "copies": 2,
+    "budget": 5,
+    "verdict": "conflict",
+    "examined": 3,
+    "steps": 2
+  },
+  {
+    "copies": 4,
+    "budget": 1,
+    "verdict": "refuted",
+    "examined": 2,
+    "steps": 1
+  },
+  {
+    "copies": 4,
+    "budget": 2,
+    "verdict": "refuted",
+    "examined": 4,
+    "steps": 2
+  },
+  {
+    "copies": 4,
+    "budget": 5,
+    "verdict": "conflict",
+    "examined": 5,
+    "steps": 3
+  },
+  {
+    "copies": 8,
+    "budget": 1,
+    "verdict": "refuted",
+    "examined": 2,
+    "steps": 1
+  },
+  {
+    "copies": 8,
+    "budget": 2,
+    "verdict": "refuted",
+    "examined": 4,
+    "steps": 2
+  },
+  {
+    "copies": 8,
+    "budget": 5,
+    "verdict": "conflict",
+    "examined": 9,
+    "steps": 5
+  },
+  {
+    "copies": 16,
+    "budget": 1,
+    "verdict": "refuted",
+    "examined": 2,
+    "steps": 1
+  },
+  {
+    "copies": 16,
+    "budget": 2,
+    "verdict": "refuted",
+    "examined": 4,
+    "steps": 2
+  },
+  {
+    "copies": 16,
+    "budget": 5,
+    "verdict": "refuted",
+    "examined": 10,
+    "steps": 5
+  }
+]

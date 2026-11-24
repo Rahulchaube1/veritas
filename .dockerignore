@@ -1,0 +1,8 @@
+.git
+.cache
+.venv
+results
+paper
+tests
+__pycache__
+*.egg-info
