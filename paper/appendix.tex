@@ -1,0 +1,32 @@
+\appendix
+\section{Reference procedure and replication notes}
+\subsection{Decision procedure for one normalized assertion}
+The following pseudocode specifies the order of operations for a normalized assertion. In particular, temporal exclusion precedes the accumulation of strengths, graph construction uses the documents examined so far, and final citation validation applies to the leading eligible stance. Question-slot resolution and multi-assertion scheduling surround this procedure as described in the text.
+
+\begin{enumerate}[leftmargin=*,label=\arabic*.]
+\item Initialize an empty ordered set of examined document IDs, an empty evidence list, and zero totals. Resolve the evaluation date. Reject ambiguous conflicting dates.
+\item For each allowed round, retrieve a deeper prefix. If citation traversal is enabled for this round, admit eligible indexed reference targets first. Keep at most one page of unseen document IDs.
+\item For each new document, assign its time state, split the text into offset-bearing passages and take the top five by query overlap. Apply deterministic stance checks. If enabled, filter unresolved passages for relevance and score the accepted pairs with NLI.
+\item Keep the strongest recorded passage for each decisive stance in the document. Rebuild the dependency graph over the examined documents. Join the endpoints of grouping edges and assign a component ID to each passage.
+\item For each eligible passage, update the maximum for its component and stance. Sum the component maxima separately, choose the provisional verdict and compute the signed margin.
+\item Stop on exhaustion, budget, or an applicable adaptive stopping condition. Otherwise repeat from step 2. Select zero-based indices of passages of the leading eligible stance whose offsets and content pass validation.
+\item Return the decision, passages, edges, constraints, actions and latency. If the leading stance has no surviving citation, return insufficient. An optional calibrator applies only on decisive answers in its documented target population.
+\end{enumerate}
+
+Two implementations can agree on this pseudocode and use different rankers or dependency criteria. For exact release behavior, preserve the configs and inspect the executable modules for \artifact{src/veritas/core.py}{search and budgeting}, \artifact{src/veritas/provenance.py}{grouping}, and \artifact{src/veritas/verification.py}{time, stance and aggregation}.
+
+\subsection{Checks a reader can reproduce}
+After following the neural setup in the repository, run the paired audit from the repository root with the optional checkpoints present. The script uses the original IDs without sampling a new subset. To recover the paired result, count queries where the gated prediction equals gold and the ungated prediction differs. Call this $n_{10}$. Reverse the tests to get $n_{01}$. Then $n_{10}=18$, $n_{01}=12$, and the net difference in correct answers is $(18-12)/80=.075$. The exact two-sided test uses thirty discordant pairs. The fifty other pairs have identical correctness and do not enter that test.
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}p{.34\linewidth}X@{}}\toprule
+Question & Artifact and check\\\midrule
+Does an earlier result reproduce? & Compare each replayed gated triple with the archived verdict, citation count and rationale count using \texttt{matches\_archived\_gated\_record}. All 80 should agree in the documented run.\\
+Does precision rise through additional evidence? & Sum \texttt{matched} and \texttt{citations} independently for each policy in the paired JSON. Compare numerators before taking their ratio.\\
+Does a missing primary source change the decision? & In the crowding table, hold copy count fixed and follow the verdict as rounds increase. Compare with the full-visibility injection file using the same copy count.\\
+Does a change in source grouping affect trust? & Inspect eligibility and both per-group maxima. A margin change may reflect grouping, a changed stance or a changed candidate set. Keep the other inputs fixed for attribution.\\
+Do the supplied dates answer the historical question? & Compare the question date with document revision and validity metadata. A publication date alone supplies availability, while an eligible interval supplies the asserted scope.\\\bottomrule
+\end{tabularx}
+\end{center}
+
+These checks use different units: claims for the paired test, passages for citation precision, documents for the candidate cutoff, and groups for the evidence balance. Recording that unit alongside each statistic is part of reproducing the result.

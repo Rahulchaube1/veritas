@@ -1,0 +1,1211 @@
+{
+  "n": 80,
+  "replayed_archive_matches": 80,
+  "gains": 18,
+  "losses": 12,
+  "both_correct": 20,
+  "both_incorrect": 30,
+  "exact_paired_two_sided_p": 0.36159460805356514,
+  "records": [
+    {
+      "id": 536,
+      "gold": "supported",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 1,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 507,
+      "gold": "insufficient",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 1,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 303,
+      "gold": "insufficient",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 1,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 230,
+      "gold": "supported",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 1280,
+      "gold": "insufficient",
+      "gated": {
+        "verdict": "supported",
+        "citations": 1,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "supported",
+        "citations": 1,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 1292,
+      "gold": "insufficient",
+      "gated": {
+        "verdict": "refuted",
+        "citations": 1,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 3,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 539,
+      "gold": "supported",
+      "gated": {
+        "verdict": "supported",
+        "citations": 1,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "supported",
+        "citations": 1,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 805,
+      "gold": "supported",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 1,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 1278,
+      "gold": "insufficient",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 3,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 975,
+      "gold": "insufficient",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 411,
+      "gold": "insufficient",
+      "gated": {
+        "verdict": "refuted",
+        "citations": 1,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 2,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 770,
+      "gold": "supported",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 1,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 399,
+      "gold": "supported",
+      "gated": {
+        "verdict": "supported",
+        "citations": 1,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "supported",
+        "citations": 1,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 1362,
+      "gold": "insufficient",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 1225,
+      "gold": "supported",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 3,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 1086,
+      "gold": "supported",
+      "gated": {
+        "verdict": "supported",
+        "citations": 1,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "supported",
+        "citations": 1,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 1121,
+      "gold": "supported",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 1359,
+      "gold": "refuted",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 13,
+      "gold": "insufficient",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 1140,
+      "gold": "refuted",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 350,
+      "gold": "insufficient",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 913,
+      "gold": "insufficient",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 3,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 1204,
+      "gold": "insufficient",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 2,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 42,
+      "gold": "refuted",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 2,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 598,
+      "gold": "refuted",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 1,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 217,
+      "gold": "supported",
+      "gated": {
+        "verdict": "refuted",
+        "citations": 1,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 1,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 216,
+      "gold": "refuted",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 3,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 1049,
+      "gold": "refuted",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 2,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 475,
+      "gold": "supported",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 1379,
+      "gold": "supported",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 380,
+      "gold": "supported",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 1,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 907,
+      "gold": "insufficient",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 2,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 1344,
+      "gold": "insufficient",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 1,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 839,
+      "gold": "supported",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "supported",
+        "citations": 1,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 811,
+      "gold": "refuted",
+      "gated": {
+        "verdict": "refuted",
+        "citations": 1,
+        "matched": 1
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 3,
+        "matched": 1
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 99,
+      "gold": "insufficient",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 1,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 171,
+      "gold": "refuted",
+      "gated": {
+        "verdict": "refuted",
+        "citations": 1,
+        "matched": 1
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 2,
+        "matched": 1
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 1144,
+      "gold": "refuted",
+      "gated": {
+        "verdict": "refuted",
+        "citations": 2,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 3,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 814,
+      "gold": "insufficient",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 1,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 53,
+      "gold": "supported",
+      "gated": {
+        "verdict": "supported",
+        "citations": 1,
+        "matched": 1
+      },
+      "ungated": {
+        "verdict": "supported",
+        "citations": 1,
+        "matched": 1
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 589,
+      "gold": "supported",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 1339,
+      "gold": "refuted",
+      "gated": {
+        "verdict": "refuted",
+        "citations": 1,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 1,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 1088,
+      "gold": "refuted",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 2,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 294,
+      "gold": "insufficient",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 1,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 115,
+      "gold": "refuted",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 1266,
+      "gold": "supported",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 1,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 527,
+      "gold": "insufficient",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 2,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 1316,
+      "gold": "insufficient",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 649,
+      "gold": "insufficient",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 2,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 180,
+      "gold": "refuted",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 2,
+        "matched": 1
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 775,
+      "gold": "insufficient",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 921,
+      "gold": "supported",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "supported",
+        "citations": 1,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 1274,
+      "gold": "supported",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 179,
+      "gold": "supported",
+      "gated": {
+        "verdict": "supported",
+        "citations": 1,
+        "matched": 1
+      },
+      "ungated": {
+        "verdict": "supported",
+        "citations": 1,
+        "matched": 1
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 137,
+      "gold": "supported",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 2,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 212,
+      "gold": "refuted",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 1232,
+      "gold": "refuted",
+      "gated": {
+        "verdict": "refuted",
+        "citations": 1,
+        "matched": 1
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 1,
+        "matched": 1
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 236,
+      "gold": "supported",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 75,
+      "gold": "insufficient",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 386,
+      "gold": "supported",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "supported",
+        "citations": 1,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 1262,
+      "gold": "supported",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 298,
+      "gold": "supported",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 1319,
+      "gold": "supported",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "supported",
+        "citations": 1,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 49,
+      "gold": "supported",
+      "gated": {
+        "verdict": "refuted",
+        "citations": 1,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 1,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 832,
+      "gold": "supported",
+      "gated": {
+        "verdict": "supported",
+        "citations": 1,
+        "matched": 1
+      },
+      "ungated": {
+        "verdict": "conflict",
+        "citations": 0,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 1298,
+      "gold": "supported",
+      "gated": {
+        "verdict": "refuted",
+        "citations": 1,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 2,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 237,
+      "gold": "insufficient",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 597,
+      "gold": "supported",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 94,
+      "gold": "insufficient",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 1,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 439,
+      "gold": "insufficient",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 1,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 551,
+      "gold": "insufficient",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 213,
+      "gold": "insufficient",
+      "gated": {
+        "verdict": "refuted",
+        "citations": 1,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 3,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 143,
+      "gold": "supported",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 914,
+      "gold": "insufficient",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 132,
+      "gold": "insufficient",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "conflict",
+        "citations": 0,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 554,
+      "gold": "insufficient",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 1,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 48,
+      "gold": "refuted",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 2,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 1370,
+      "gold": "refuted",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 1,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 911,
+      "gold": "supported",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 1,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    },
+    {
+      "id": 691,
+      "gold": "insufficient",
+      "gated": {
+        "verdict": "insufficient",
+        "citations": 0,
+        "matched": 0
+      },
+      "ungated": {
+        "verdict": "refuted",
+        "citations": 2,
+        "matched": 0
+      },
+      "matches_archived_gated_record": true
+    }
+  ]
+}

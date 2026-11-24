@@ -1,0 +1,75 @@
+\section{An end-to-end audit of one claim}
+A small corpus lets a reader check every stage without having to trust a leaderboard result. We executed the following example with the default rule models, a page size of eight, and an explicit evaluation date of 1 June 2024. It is a constructed example of the public SDK. All four documents have a single sentence beginning with \emph{The ferry carries} and ending with \emph{passengers.} The number between those phrases and the metadata vary as shown.
+
+\begin{center}\small
+\begin{tabular}{@{}llrll@{}}\toprule
+ID & Publisher & Number & Valid from & Valid to\\\midrule
+register & Harbor register & 40 & 2023-01-01 & open\\
+notice & Operator notice & 41 & 2023-01-01 & open\\
+digest & Island digest & 41 & 2023-01-01 & open\\
+archive & unspecified & 42 & open & 2022-12-31\\\bottomrule
+\end{tabular}
+\end{center}
+The digest also declares a citation to the notice. Querying \emph{The ferry carries 40 passengers} examines four documents in one retrieval round. The register passage supports the assertion by exact match. The notice and digest contradict it by a single comparable numeric slot. Both are temporally eligible. The archive also contains a numerical contradiction, but its end date excludes it from the June 2024 vote. The output exposes its passage with state \texttt{outside\_interval}. This lets a reader see why three disagreeing texts give only one opposing vote.
+
+The notice and digest share an identical normalized text sequence. The graph records \texttt{same\_content} before considering the explicit citation. In this run the component representative is the identifier \texttt{digest}. The label is a deterministic implementation detail of the component, with no implication that the digest originated the observation. The component supplies opposing weight one. The register supplies supporting weight one. Thus $S=C=1$, $m=0$ and the verdict is conflict. The returned lists distinguish the two eligible contradictory passages from the single excluded historical passage.
+
+All four passage ranges are $[0,32)$ in their respective documents. They are offsets into four distinct strings. A service client that stores only the offsets loses the identity of the document to which each interval belongs. Likewise, storing only the final zero balance loses both the supporting and opposing sources. A compact human-facing report should preserve at least the eligibility state, group, stance, document ID and source text for each distinct observation under dispute.
+
+\subsection{Changing a single input}
+Keeping the three contemporary documents but removing their time bounds would classify them as unknown in this explicitly dated query. Removing the \emph{as-of} condition instead would permit unscoped evidence lacking bounds to contribute. Changing the body of the digest while preserving its reference can leave the group intact through the citation rule. Changing both body and reference may separate the documents and increase opposition. These are deductions from the stated algorithm. The executed trace above establishes the baseline from which each counterfactual departs.
+
+This example also illustrates an asymmetry of errors. An overly aggressive group can suppress independent corroboration. A missed group can inflate supporting or contradicting weight. Either effect may be masked when the final threshold is insensitive to a small change in totals. Tests should therefore check intermediate group assignments and signed totals as well as the final verdict. Two implementations can return conflict on this example while disagreeing about whether the archive was current or the digest was independent.
+
+\section{Computational behavior and operating constraints}
+\subsection{Where work accumulates}
+Let $P$ be corpus token count, $N$ document count, $d$ vector dimension, $M$ examined documents and $K$ the internal candidate depth. Building lexical postings scales with the number of token occurrences and the emitted unique term--document entries. Query cost depends first on the lengths of the postings addressed by its terms and then on sorting the accumulated scores. A common query term can address much of the corpus. The default latent-vector ranking scans $N$ vectors with $O(Nd)$ inner-product work and sorts candidate scores. The initial randomized SVD adds a corpus fit after ingestion.
+
+The neural configuration encodes the documents and builds an approximate nearest-neighbor graph. Approximate search quality depends on graph construction and search breadth \cite{HNSW}. We give no logarithmic worst-case guarantee. Reranking then evaluates up to $\min(N,\max(32,k))$ candidate pairs. Consequently, asking for three documents can still rerank 32 candidates before the verifier examines the three it receives. An API budget expressed only in document pages does not count all model calls. Verification considers up to five passages per newly examined document, with additional savings when exact rules resolve a passage or the rationale gate rejects it.
+
+For a shingle or metadata key $a$ with posting count $f_a$ in the examined batch, building candidate pairs can generate on the order of $\sum_a f_a^2$ visits before pairwise set comparisons. Common boilerplate can approach the all-pairs regime. The small review budget limits $M$, while repeated graph construction across rounds still incurs cost. A large site-wide index of all potential provenance relationships would require a different design and evaluation. No scalability claim follows from tests on a batch of ten documents.
+
+\subsection{What was timed}
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}Xrrr@{}}\toprule
+Recorded operation & p50 & p95 & p99\\\midrule
+SciFact BM25 retrieval, milliseconds & 13.4 & 23.3 & 27.0\\
+SciFact rank fusion retrieval, milliseconds & 16.5 & 26.9 & 35.0\\
+Gated neural search, milliseconds & 450 & 567 & 687\\\bottomrule
+\end{tabularx}
+\end{center}
+The retrieval file includes the first index construction in the sequence of timed queries, while the neural experiment times one warm-up and index build separately. Its gated evaluation reports about 133 seconds for that initial operation and roughly 1,393 MiB peak resident memory for the process. A percentile over many queries can hide a slow first request. An application that frequently upserts its corpus would pay the rebuild cost more often. Cached rankings, CPU thread settings, input truncation and batch composition further affect comparisons.
+
+The gated timings cover search on the 80-claim evaluation. They do not include data download, model download or manual inspection, and the code runs the paired ungated search as a separate call. The synthetic tests generally scan much smaller corpora. Comparing their millisecond latencies directly to the neural run would change model type, index size and query distribution at the same time. Energy use, GPU behavior, concurrency at scale and per-answer financial costs were not measured.
+
+\section{Using the findings in a review workflow}
+The same confusion matrix can support different choices depending on the cost of a wrong answer. Let a correct decisive answer have value $b$, an incorrect decisive answer incur cost $c$, and an abstention have zero utility. Counting the observed 80 paired queries gives
+\[
+ U_{\rm ungated}=22b-31c,\qquad U_{\rm gated}=11b-7c .
+\]
+On this sample the gated configuration has greater utility when $24c>11b$. This expression makes the trade-off concrete without assigning a dollar amount to a missed observation. If each abstention requires expert review at cost $r$, the gated configuration produces 35 additional abstentions and its advantage becomes $24c-11b-35r$. A team with a limited review queue may judge the trade-off differently from a team whose main concern is an erroneous decisive statement.
+
+A workflow requiring a correct verdict \emph{and} an aligned citation presents another choice. Both settings deliver six such cases. The ungated setting makes the reader inspect 83 citations to obtain six aligned ones. The gated setting presents nineteen. This can reduce reading burden, even when it delivers no increase in the number of grounded answers. The experiment did not time reviewers, so cost per citation is an assumption and improved human productivity is a hypothesis. The point of the calculation is that precise counts permit different users to apply their own costs.
+
+\subsection{Limits of operational interpretation}
+A source group is a decision about how many votes to count. It should never be used to accuse a publisher of deliberate copying. A common quotation may be an appropriate reproduction of a primary source. Two medical abstracts published by the same organization can report independent studies. Conversely, distinct domain names can conceal a shared data source. A human investigator needs dates, citations and evidence of information flow before making claims about authorship or intent.
+
+Unknown scope and a missing source should also remain distinct in a user interface. The first means a document was visible but lacked information needed for a specified date. The second means the candidate search did not return it at all. A request for an earlier version can address the first. A broader or differently ranked search may address the second. Raising model confidence thresholds alone addresses neither.
+
+\section{Threats to validity and a decisive follow-up}
+\paragraph{Internal validity.} The copy experiments use short exact statements, known intervals and controlled document identities. Their virtue is isolation of mechanisms. Their weakness is that the input signals are unusually clean. Changing both the title and cutoff between the complete-visibility and crowding studies supplies an existence counterexample, not a pooled estimate of one causal effect. The ablations within each design keep the underlying worlds fixed.
+
+\paragraph{Construct validity.} SciFact rationales are a documented target for verification, but an unannotated sentence can be a valid alternative. Our substring-in-gold-sentence test can also give credit to a fragment of an annotated sentence even if a qualifying clause lies outside the fragment. Exact offsets establish reproducible provenance in the stored text. They supply a weaker condition than independent human agreement that the cited passage entails the complete claim.
+
+\paragraph{External validity.} The small training and evaluation samples come from scientific abstracts and generated worlds. Publishers, claim types, time expressions and norms of citation differ in news, law and policy. The synthetic templates have much lower effective diversity than their row count suggests. An observed synthetic zero calibration error cannot be transferred to those domains. Neither the source group labels nor the claim verdicts evaluate malicious intent or the reliability of a real organization.
+
+\paragraph{A follow-up that could falsify the design.} Sample stories before inspecting system output. Preserve dated snapshots from primary records and reporting outlets. Have two annotators identify each claim's subject, predicate, value, unit, reference time and exact rationale span. Ask for separate labels for citation, shared primary observation, suspected dependence and unresolved provenance. Record disagreement before adjudication. Split by story, source family and time, retaining frozen cutoff dates for all models. This would create a stricter test of independence than splitting randomly over web pages.
+
+At equal retrieval budgets, compare ordinary candidate ranking, downstream-only grouping, and a candidate policy that explicitly seeks new independent families. Report recall of the first primary source, recall of the first opposing family, decisive-answer accuracy, coverage, and verified-citation yield per query. Repeat copy injection both before and after truncation. If downstream grouping still improves only the full-visibility test and the diversified policy fails to recover missing observations, the larger end-to-end hypothesis would remain unsupported. This proposed experiment is distinct from the measured results in this report.
+
+\section{Reproducibility and conclusion}
+The release provides the source code, default and neural configurations, public-data downloaders, trained JSON heads, benchmark generator and machine-readable measurements. Pin the repository revision and the upstream model revisions before replay. The synthetic corpus can be regenerated without external documents. SciFact claims and annotations use the upstream CC BY 4.0 terms, and the abstracts are distributed by the upstream project under ODC-By 1.0. The NFCorpus mirror records CC BY-SA 4.0. Original generated worlds, project code and third-party model weights have separate terms. See the \artifact{datasets/README.md}{dataset card} and \artifact{models/README.md}{model cards} for attribution and sources.
+
+The expanded paired audit reads the 80 published query IDs, loads the same corpus, repeats the search at one three-document step, and evaluates both configurations against the same annotated rationales. Its JSON stores both decisions per query. A reader can reconstruct the $2\times2$ agreement table, the citation denominators and the exact test without trusting a rounded percentage. Figure sources read the recorded result files. The \href{https://github.com/Rahulchaube1/veritas/tree/main/paper}{paper directory} contains the audit and its output, while the \artifact{docs/reproduce.md}{reproduction guide} describes environment and corpus setup.
+
+The research result is a separation of two failure mechanisms. A maximum over each source component prevents a repeated eligible observation from gaining voting strength within that component. A retrieval budget can remove a distinct observation before its vote is ever considered. The scientific audit reveals a parallel separation: a passage gate can remove many unmatched citations without finding another matched rationale. Evaluating the number of independently grounded answers, together with what was excluded and at which stage, gives a more informative account of progress than a single verdict accuracy.

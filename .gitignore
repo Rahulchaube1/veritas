@@ -16,3 +16,4 @@ dist/
 *.log
 *.out
 .env
+/paper/*.toc

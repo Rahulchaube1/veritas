@@ -1,0 +1,160 @@
+\section{The unit of corroboration}
+A harbor register records a ferry capacity of forty passengers. A bulletin gives the capacity as forty-one. Several local publications reproduce the bulletin. A search can now produce many passages saying forty-one and a single passage saying forty. An editor deciding whether there is agreement would want to see both accounts, their effective dates, and the relationship between the bulletin and its copies. Counting search results answers a different question: how often will a reader encounter each value?
+
+Three decisions can change the answer. Retrieval determines whether the register enters the review set. Interpretation determines whether the statements concern the same ferry, unit and period. Aggregation determines the influence of repeated passages. The last operation can succeed perfectly while retrieval has already excluded the decisive observation. We use this example under both full visibility and bounded retrieval because it identifies exactly when information is lost.
+
+VERITAS stands for \emph{Verified Evidence Retrieval with Independent Temporal Attribution and Scoring}. Each output is a judgment about a supplied collection as examined under a stated budget. A missing graph edge does not certify that two reporters conducted separate investigations. It means only that the signals available to this implementation failed to join their documents.
+
+\subsection{Research questions and contribution}
+The study asks three questions. Does duplicating eligible evidence change its influence after grouping? Does that property survive a candidate cutoff? Does locating relevant documents yield correct verdicts with corresponding sentence-level evidence? The first question admits a conditional mathematical answer. The second can be falsified with a constructed counterexample. The third requires independent annotations and separate measures of retrieval, abstention and citation quality.
+
+The project contributes an independently implemented decision procedure combining temporal eligibility, per-group signed maxima and bounded retrieval. It also contributes a paired experimental design that varies copy count and candidate visibility separately. The originality claim is one of system design and experimental analysis. Earlier truth-discovery research explicitly models dependent sources \cite{Dependence}. We have no evidence of worldwide algorithmic priority, a general factuality advantage, or superiority to commercial search.
+
+For the copy test we can hold all relevant observations fixed. A verifier used by a researcher must also find distinct observations under real cutoffs. Even correctly identified independent reports may be mistaken. Accordingly, the experiments use separate reference variables for an evidence verdict and, where available, the factual truth in a simulated world. We report how often the verifier speaks as well as how often it is correct when it speaks.
+
+\section{Relationship to existing research}
+\subsection{Finding relevant documents}
+Link analysis makes relationships between pages informative for web search \cite{PageRank}. BM25 estimates lexical relevance from document frequency, term frequency and relative document length \cite{BM25}. A search result relevant to a disputed number can reproduce either side. The retrieval experiment gives an annotated refuting abstract the same relevance credit as an annotated supporting one. Polarity enters at a later stage.
+
+Dense Passage Retrieval learns representations suitable for nearest-neighbor lookup \cite{DPR}. ColBERT retains contextual token-level interactions, and ColBERTv2 reduces the representation cost of late interaction \cite{ColBERT,ColBERTv2}. Our CPU configurations offer two ways to obtain a second ranking: a corpus-fitted latent character representation and a pretrained sentence encoder. Reciprocal rank fusion combines lexical and vector rankings without requiring comparable raw scores \cite{RRF}. The choice of baseline matters. Adding a representation that appears more expressive can lower measured retrieval quality.
+
+\subsection{Source relationships and time}
+Dong and colleagues modeled how copying causes false values to gain apparent support \cite{Dependence}. Knowledge-Based Trust distinguished source errors from extraction errors in factual triples \cite{KBT}. VERITAS adopts a smaller target that a local reviewer can inspect. A strong edge has an observable basis such as an explicit citation or shared quote. A flagged resemblance below the grouping threshold remains visible without changing the vote. Shingle comparisons build on established document-resemblance work \cite{MinHash}.
+
+Temporal retrieval studies how query time and times expressed by documents affect relevance \cite{TempIR}. HyTE encodes temporal structure in a knowledge graph \cite{HyTE}. FreshQA evaluates changing facts and false premises, and LiveFact evaluates evolving, incomplete evidence \cite{FreshLLMs,LiveFact}. Here validity bounds are supplied inputs. We can test whether the verifier honors them. We cannot infer from that experiment how accurately an upstream extractor could reconstruct a missing term of office or the effective date of a regulation.
+
+\subsection{Verification and selective answers}
+FEVER, FEVEROUS and SciFact tie decisions to evidence, with FEVEROUS extending the task to structured material \cite{FEVER,FEVEROUS,SciFact}. AVeriTeC studies real claims with web evidence and CONFACT targets conflicting sources \cite{AVeriTeC,CONFACT}. FActScore, SAFE and ALCE examine atomic factual support or citation quality in generated responses \cite{FActScore,SAFE,ALCE}. An extractive answer makes it possible to inspect the claim and source span without disentangling a generated narrative. Establishing that a span exists remains easier than establishing that the span justifies the claim.
+
+Selective prediction studies coverage and error among accepted cases. Calibration asks whether predicted probabilities match observed frequencies \cite{SelectiveNet,Calibration}. Our empirical calibrator serves one artificial population. A conformal guarantee would require a specified prediction procedure and assumptions about exchangeability \cite{Conformal}. Grouping documents supplies neither. The separate ACL artifact named \emph{VeriTaS}, short for \emph{Verified Theses and Statements}, is a dynamic multimodal fact-checking benchmark \cite{VeriTaS}. Repository and version identifiers disambiguate these projects.
+
+\section{Problem formulation}
+Let $D$ be a finite document snapshot, $q$ a user input, $c$ an atomic claim under examination, $t$ the evaluation date and $B$ the maximum permitted retrieval rounds. The verdict $y$ takes one of four values: supported, refuted, conflict and insufficient. Only support and refutation count as decisive answers. Conflict identifies competing eligible stances. Insufficient covers missing evidence, unsupported question forms and evidence that the verifier cannot interpret.
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}lX@{}}\toprule
+Object & Observable meaning\\\midrule
+$D_B$ & Documents examined when search stops. A document in the index can be absent from this set.\\
+$(d,a,b)$ & Passage of the normalized text of document $d$ at half-open character interval $[a,b)$.\\
+$h,w$ & Passage stance and strength. Deterministic rules emit zero or one. Accepted neural stances use a model score.\\
+$G_B$ & Dependency graph built over examined documents. Edges marked for grouping join components.\\
+$S,C,m$ & Total supporting weight, total opposing weight and their normalized signed balance.\\
+$z$ & Correctness target defined by experiment. Synthetic calibration uses agreement with simulator truth conditional on answering.\\\bottomrule
+\end{tabularx}
+\end{center}
+A reviewer can recompute a source slice from $(d,a,b)$ and its snapshot. Recomputing $m$ requires stance strengths, eligibility states and group assignments for eligible passages. Establishing whether the real world agrees with $c$ may require observations outside $D$. These are different levels of auditability.
+
+Consider two worlds containing the same bulletin, date and metadata. In one world the author counted the berths correctly. In the other the count is wrong. Any deterministic verifier of those identical inputs produces the same output in both worlds. Better text extraction cannot resolve the ambiguity. A new observation, a trusted external reference, or a justified prior would be needed. The synthetic unsupported-report family instantiates this distinction between the report's content and simulator truth.
+
+\section{Candidate retrieval}
+The engine persists documents in SQLite. An upsert validates a batch, replaces records in a transaction and invalidates the in-memory index. The index uses documents ordered by identifier. Search and writes share an engine lock, giving a request a coherent local snapshot for slicing citations. A later upsert can change the text at the same identifier. Replication therefore requires preserving the actual corpus snapshot.
+
+Input may be an assertion or a restricted question. For a simple polar question about a state such as \emph{open}, the engine can form an assertion about the subject. For a copular question such as \emph{What is the capital?}, it can seek a passage assigning a value to that slot and check for competing values. Asking why a station closed can presuppose an event that was never established. The rule path abstains on this unsupported question form. This behavior earns the expected label on the false-premise template without demonstrating general false-premise reasoning.
+
+\subsection{Lexical and latent rankings}
+Let $f_{td}$ be term frequency, $n_t$ the number of documents containing term $t$, $N$ the corpus size and $\ell_d,\bar\ell$ the document length and mean length. Case-folded Unicode word tokens are indexed. Each distinct query term contributes once. The lexical score is
+\[
+ \sum_{t\in q}\log\!\left(1+\frac{N-n_t+0.5}{n_t+0.5}\right)
+ \frac{(1+k_1)f_{td}}{f_{td}+k_1(1-b+b\,\ell_d/\bar\ell)},\quad k_1=1.2,\quad b=.75 .
+\]
+Title and body are concatenated. Postings for a rare technical term can give a useful short list. Generic terms repeated through a long abstract contribute less because of length normalization and term-frequency saturation.
+
+The offline second ranking uses up to 25,000 character $n$-grams of lengths two through four inside word boundaries. After TF--IDF weighting, truncated SVD projects documents into at most 64 dimensions, limited by both matrix dimensions. When fewer than two latent dimensions are available, the engine uses the TF--IDF vectors directly. Query and document vectors are compared by normalized inner product. Shared word fragments help retrieve morphological variants, but they can also conflate distinct entities with similar spellings.
+
+\subsection{Multilingual encoding and rank fusion}
+The optional neural encoder uses masked mean pooling and unit normalization. A FAISS HNSW index uses inner product, graph parameter 24 and search breadth 64 \cite{HNSW}. An English MS MARCO cross-encoder scores query--document pairs in hybrid mode. Multilingual retrieval and English inference serve different operations. Finding a Spanish passage does not ensure a decisive verdict for an English claim.
+
+Let $r_j(d)$ be the one-based rank of $d$ on list $j$. The fusion term is
+\[
+ F(d)=\sum_{j:d\in L_j}\frac{1}{60+r_j(d)} .
+\]
+Absent documents contribute zero for that list. Each list has depth $\min(N,\max(32,k))$. Sorting the union by $F$ and retaining that depth limits the candidates for further reranking. An optional learned relevance estimate contributes $p_r(d)/60$. An optional cross-encoder contributes $0.05\,\sigma(l_d)$ for logit $l_d$. Both weights are design choices.
+
+A document first on one list gets $1/61\approx .0164$. A document twentieth on both gets $2/80=.025$. Agreement can therefore lift moderate matches above an excellent lexical hit. Complementary vocabularies may rescue a relevant document. A weak second representation may also push an exact technical match below the cutoff. The SciFact comparison measures the direction and size of the effect on this corpus.
+
+\subsection{Fitted document relevance}
+The pointwise relevance model uses query-term coverage in title and in body, and Jaccard overlap between query and body. It fits regularized logistic regression to annotated and sampled query--document pairs. The exported intercept is $-5.763$ and the coefficients in feature order are $3.712$, $9.498$ and $.936$. These values apply to the observed sampling distribution and feature scales. They estimate neither publisher authority nor factual correctness.
+
+There are 1,307 training pairs, 204 validation pairs and 348 reserved diagnostic pairs. Mean log losses are .1375, .1097 and .1305. The sampling scheme draws five non-evidence documents per retained claim and labels the evidence documents positive. Random negatives often have little lexical overlap. A favorable loss on that problem is compatible with difficulty ordering the top abstracts after both retrievers have already selected them. This is why we measure the fitted model downstream at fixed $k$.
+
+\section{Passage selection and temporal eligibility}
+A document can mention several outcomes, conditions or versions of a fact. The engine segments normalized text into passages with character offsets, orders them by token-set Jaccard overlap with the claim and considers up to five per document. A reviewer diagnosing a missed citation should examine document rank and passage preselection separately. A correctly retrieved abstract can contain a rationale outside the examined five.
+
+An exact normalized assertion yields support. Normalization folds case, collapses whitespace and strips terminal punctuation. Opposite explicit negation yields contradiction when removing recognized negation leaves identical text. The numeric rule compares a single numeric slot in otherwise identical context, including units. It uses decimal arithmetic and supports grouped thousands. Lower bounds, ranges and qualifiers need different inference rules. A toll of exactly twelve dollars disagrees with exactly thirteen dollars. Two lower bounds of twelve and thirteen can both hold.
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}p{.32\linewidth}Xl@{}}\toprule
+Claim & Passage & Rule stance\\\midrule
+The toll is 12 dollars. & The toll is 12.0 dollars. & Support\\
+The toll is 12 dollars. & The toll is 13 dollars. & Contradict\\
+The toll is 12 dollars. & The toll is 12 euros. & Neutral\\
+Ice is cold. & Ice is not cold. & Contradict\\
+The toll is 12 dollars. & If it rains the toll is 12 dollars. & Neutral\\\bottomrule
+\end{tabularx}
+\end{center}
+A strength of one records a deterministic match. The source can still be mistaken. The analyzer retains the highest-strength passage for each non-neutral stance per document, allowing support and contradiction to coexist. If there is no non-neutral stance it returns a neutral passage where available. This compact representation can omit legitimate alternative rationales.
+
+\subsection{Rationale filter and neural inference}
+For query-token set $Q$, passage set $P$ and title set $T$, let $W(A)$ sum corpus-derived inverse-frequency weights over distinct tokens. The passage filter's first three features are $W(Q\cap P)/W(Q)$, $W(Q\cap T)/W(Q)$ and $W(Q\cap P)/W(P)$, with denominators bounded below by one. Other features capture unweighted query coverage, the longest contiguous token match normalized by distinct query-token count, presence of a shared numeric token, and $\log(1+|P|)/6$. These features reward topical and surface agreement. They cannot decide whether an effect increased or decreased.
+
+Training uses annotated evidence abstracts and hard negatives from the top three BM25 results. Sentences outside annotated rationales are negative examples for this objective. This can mislabel an alternative rationale. An abstract-text hash assigns records to fit or validation. IDF statistics use the retained pool before this split, so validation contributes unsupervised vocabulary information. Official development cited texts and normalized duplicate claim strings are excluded from supervised pools. Paraphrases and pretraining exposure remain possible.
+
+The filter fits on 8,684 pairs and selects a threshold on 2,026 validation pairs. A scan from .05 through .95 in increments of .025 selects .15 by $F_{0.5}$, favoring precision over recall. Validation precision is .372, recall .289 and average precision .228. These values characterize passage identification within sampled candidates. They cannot be interpreted as the reliability of an answer.
+
+After deterministic checks, eligible unresolved passages can reach a quantized DeBERTa NLI model, with the passage as premise and the claim as hypothesis \cite{SNLI}. A vote requires a winning entailment or contradiction class, a maximum softmax score of at least .90, and at least one shared query token. Only unresolved passages up to 1,600 characters enter this path. Tokenized model inputs are truncated at 192 tokens, potentially losing a late qualification. A passing score is evidence of a model decision. The external rationale evaluation tests whether the selected passage warrants it.
+
+\subsection{Availability and validity}
+Publication marks when a document became available. Modification marks a revision of the version now in the index. An event date identifies when an event occurred. A validity interval states when the assertion applies. An open-ended interval imposes its supplied bound and leaves uncertainty on the other side.
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}p{.32\linewidth}XX@{}}\toprule
+Metadata at date $t$ & State & Consequence\\\midrule
+Publication or modification later than $t$ & Unavailable & Current version excluded from the historical verdict.\\
+$t$ outside a supplied validity bound & Outside interval & Passage inspectable, zero voting weight.\\
+$t$ inside supplied bounds & In interval & A non-neutral passage can contribute.\\
+No bounds, time-scoped query & Unknown scope & No vote for this date.\\
+No bounds, unscoped assertion & Unspecified & A non-neutral passage can contribute.\\\bottomrule
+\end{tabularx}
+\end{center}
+Both endpoints are inclusive. Consider a fare valid through 31 December 2022 and its replacement valid from 1 January 2023. Checking the old fare in June 2024 excludes the expired record. If both records lack bounds, strict time-scoped verification may abstain even though a human familiar with the schedule could identify the governing document. A future modification date can likewise exclude an informative record because the archived version is unavailable. The output records which exclusion occurred.
+
+\section{Dependency graph and signed aggregation}
+Candidate pairs come from inverted keys over normalized text, references, URLs, publishers, quotations and token trigrams. URL canonicalization lowercases scheme and network location, removes a trailing slash and drops the fragment. It preserves the query string. Two tracking URLs can remain separate, and two versions at one canonical URL can be grouped. These properties matter for historical corpora.
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}p{.26\linewidth}X@{}}\toprule
+Relation & Grouping rule\\\midrule
+Same content & Identical token sequence or canonical URL.\\
+Cites / shared reference & Declared citation to a document or common declared reference. Explicit citation direction is recorded when available.\\
+Shared quote & Identical normalized quote of at least seven tokens from a quoted span of 30--1,200 characters.\\
+Same publisher & Conservative cap on a publisher, including desks that may have gathered separate observations.\\
+Possible derivative & Trigram Jaccard at least .48, with at least five trigrams in the document under consideration. Scores of .78 or higher join components.\\\bottomrule
+\end{tabularx}
+\end{center}
+The implementation applies rules in priority order. A pair with a common URL and publisher can expose only the higher-priority basis. Publication date and then identifier order comparisons where dates exist. Chronology alone supplies no proof that a later writer consulted an earlier one. An explicit citation can point against traversal order. The audit edge retains its orientation, while grouping uses undirected connectivity.
+
+Components make the rule transitive. If A and B cite a common register and B shares a publisher with C, A and C can enter one group without a direct match. This can cap repeated dissemination along a chain. It also creates a bridge failure: B might cite A on one subject and share reporting infrastructure with C on another. Grouping whole documents may join passages whose underlying observations were independent.
+
+\subsection{Decision and invariant}
+In group $g$, let $u_g$ and $v_g$ be the largest eligible supporting and contradicting strengths, respectively. A missing strength is zero. Define
+\[
+ S=\sum_g u_g,\qquad C=\sum_g v_g,\qquad m=(S-C)/(1+S+C).
+\]
+A lone unit supporter yields $m=1/2$. Two independent unit supporters yield $2/3$. Equal opposing weights yield zero, as does the absence of any evidence. A consumer that chooses its own verdict solely from $m$ cannot distinguish conflict from insufficiency.
+
+When $S=C=0$, return insufficient. For two positive totals, compute the ratio of the smaller to the larger. A ratio of at least .34 yields conflict. Otherwise select the leading eligible stance and check that a citation survives. With unit votes a two-to-one split yields conflict, while three to one gives a decisive answer with the opposing passage still visible. The .34 cutoff expresses a policy about disagreement. It does not estimate source reliability.
+
+\textbf{Proposition.} Preserve the eligibility, strengths and group assignments of all visible observations. Add a copy to its original group with strength no greater than the group's existing maximum for that stance. Then $S$, $C$ and $m$ are unchanged. If an earlier decisive verdict retains a surviving citation, its aggregation decision is unchanged as well.
+
+\emph{Proof.} Only one per-stance maximum could change. Taking the maximum of its old value and a value no greater leaves that maximum fixed. Substitution leaves both sums, their ratio where defined, and the signed balance unchanged. The separate nonempty-citation condition preserves a previously decisive output. \hfill$\square$
+
+There are three routes out of the assumptions. A copy can displace a different component from the retrieval window. A new bridge can merge formerly distinct components. A paraphrase can receive a stronger score or an opposite stance. The result also permits a longer evidence list and additional edges even when the verdict stays fixed. These qualifications make the claim falsifiable and explain precisely which version of duplication resistance the experiment measures.
+
+\section{Budget, abstention and output}
+The standard policy requests progressively larger prefixes. Each round admits at most a page of previously unseen documents. Optional deep mode follows locally indexed citation identifiers on alternating expansion rounds and can add up to four title tokens to the query. A reference hop uses a page slot. The effective budget is the smaller of the requested and configured limits. Search terminates on exhaustion or, after at least two rounds, on a decisive margin of absolute magnitude at least .65 for an eligible non-slot query. This is a finite heuristic policy. No experiment estimates the utility of an action the policy never took.
+
+For a multi-assertion request, the verification entry point splits sentence-separated assertions and divides the remaining steps among unfinished assertions. A subquery can return unused budget. A late assertion can receive an insufficient verdict without a search when the budget is exhausted. Citation indices are shifted into the combined evidence array. This prevents paragraph length from silently multiplying the total budget but can disadvantage a difficult late assertion. Sentence order is therefore a meaningful variable in any evaluation of that service.
+
+An output includes query, normalized claim, verdict, passages, offsets, dependency edges, time eligibility, actions and latency. Citation indices are zero-based positions in its evidence array. A refutation cites opposing passages. A conflict can have substantial evidence and still have an empty decisive-answer citation list. The final check tests that the selected substring exists in the indexed document and passes a content filter. Whether that passage justifies the claim requires an external reference or human reading.
+
+Confidence defaults to null. The signed balance remains available. An optional isotonic function of $|m|$ is fitted to decisive answers with known truth in the synthetic population. Deployment elsewhere would require calibration on a population with a defined correctness target. The engine also lacks an estimate of the proportion of all relevant sources in its local index. High retrieval scores, many citations and low latency cannot supply that missing quantity.
