@@ -1,0 +1,25 @@
+{
+  "python": "3.12.14",
+  "platform": "Linux x86_64",
+  "cpu_only": true,
+  "tests": {
+    "tests": "46",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "5.089"
+  },
+  "coverage_percent": 94.02628434886499,
+  "coverage_type": "statement",
+  "checked": [
+    "Ruff lint and format",
+    "mypy src/veritas",
+    "Bandit high-severity scan",
+    "sdist and wheel build",
+    "Docker image build and authenticated HTTP search",
+    "headless Chromium UI returned supported claim, NASA citation and benchmark table",
+    "Jupyter notebook executed locally with LAUNCH_UI=False",
+    "optional pretrained NLI, multilingual embeddings and cross-encoder on CPU"
+  ],
+  "note": "CI omits the optional neural integration test when model weights are absent. Local run includes it. No remote Google Colab execution or live SearXNG test."
+}

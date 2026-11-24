@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VERITAS research release</title>
+<style>body{font:17px/1.55 "Source Sans 3",Arial,sans-serif;color:#213b30;background:#f6f8f4;margin:0}main{max-width:840px;margin:auto;padding:5vw 5vw 9vw}h1{font:4rem/1 Georgia,serif;margin:0}.lead{font-size:1.3rem}h2{margin-top:2.3rem}a{color:#16563c}nav{display:flex;gap:1.2em;flex-wrap:wrap}section{border-top:1px solid #bac8bf;margin-top:2rem}label{display:inline-block;margin:.4rem 1rem .4rem 0}select{font:inherit;padding:.4rem}.out{border-left:4px solid #44725f;padding:1em;background:white}footer{margin-top:3rem}</style></head>
+<body><main><h1>VERITAS</h1><p class="lead">How much independent evidence is behind a search result?</p>
+<p>A research implementation by Rahul Chaube that checks claims against a local collection, dates the evidence and groups repeated reports.</p><nav><a href="https://colab.research.google.com/github/Rahulchaube1/veritas/blob/main/notebooks/veritas.ipynb">Run in Colab</a><a href="https://github.com/Rahulchaube1/veritas">Source code</a><a href="https://github.com/Rahulchaube1/veritas/raw/main/paper/veritas.pdf">Read the paper</a></nav>
+<section><h2>The duplicate experiment</h2><p>One primary report and several copies of a conflicting report compete for a place in the retrieval results. Explore the recorded runs.</p><label>Copies <select id="copies"><option>1</option><option>2</option><option>4</option><option>8</option><option>16</option></select></label>
+<label>Search steps <select id="steps"><option>1</option><option>2</option><option>5</option></select></label><p class="out" id="out" aria-live="polite">Loading the experiment…</p></section>
+<section><h2>Scientific claims</h2><p>BM25 retrieved relevant abstracts with 0.930 mean Recall@10 on 188 SciFact claims. On a separate 80-claim neural comparison, the passage-filtered verifier gave 18 decisive answers. Eleven matched the gold verdict, and six of 19 citations matched annotated rationales.</p><a href="https://github.com/Rahulchaube1/veritas/tree/main/results">Inspect per-query results</a></section>
+<footer>Independent research release · 24 November 2026</footer></main>
+<script>
+fetch('crowding.json').then(r=>r.json()).then(data=>{
+const copies=document.querySelector('#copies'),steps=document.querySelector('#steps'),out=document.querySelector('#out');
+function render(){const r=data.find(v=>v.copies===Number(copies.value)&&v.budget===Number(steps.value));out.textContent='Verdict: '+r.verdict+'. The verifier examined '+r.examined+' documents in '+r.steps+' search steps.';}
+copies.onchange=steps.onchange=render;render();
+}).catch(()=>{document.querySelector('#out').textContent='Recorded results could not be loaded.';});
+</script></body></html>

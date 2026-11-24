@@ -1,7 +1,7 @@
 {
   "seed": 17,
-  "same_sample_ungated_correct": 0,
-  "same_sample_ungated_answered": 0,
+  "same_sample_ungated_correct": null,
+  "same_sample_ungated_answered": null,
   "documents": 5183,
   "sample_size": 48,
   "answered": 24,

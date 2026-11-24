@@ -43,7 +43,11 @@ class Veritas:
         return json.loads(path.read_text()) if path else None
 
     @classmethod
-    def from_config(cls, path):
+    def from_config(cls, path=None):
+        if path is None:
+            path = Path("configs/default.yaml")
+            if not path.is_file():
+                return cls(Config(database=".cache/veritas.db"))
         return cls(Config.model_validate(yaml.safe_load(Path(path).read_text()) or {}))
 
     def close(self):

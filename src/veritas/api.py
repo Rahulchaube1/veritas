@@ -94,7 +94,7 @@ def create_app(engine: Veritas | None = None, token: str | None = None, producti
             app.state.engine.close()
 
     app = FastAPI(title="VERITAS Evidence API", version="0.1.0", lifespan=lifespan)
-    app.state.engine = engine or Veritas.from_config(os.getenv("VERITAS_CONFIG", "configs/default.yaml"))
+    app.state.engine = engine or Veritas.from_config(os.getenv("VERITAS_CONFIG"))
     app.add_middleware(Guard, token=token, production=production)
 
     async def execute(fn, *args):

@@ -16,7 +16,7 @@ The original synthetic records in this repository are released under CC0-1.0. Th
 
 | Collection | What it would test | Release status |
 |---|---|---|
-| BEIR | Ranked document relevance | BEIR-format corpus, query and qrels adapter supplied. Native SciFact is the measured corpus. [BEIR](https://github.com/beir-cellar/beir) |
+| BEIR | Ranked document relevance | NFCorpus test split executed with graded qrels on 323 queries. Mean nDCG@10 was 0.264. The BEIR maintainers’ corpus and qrels mirrors identify CC BY-SA 4.0. [Corpus](https://huggingface.co/datasets/BeIR/nfcorpus) · [Judgments](https://huggingface.co/datasets/BeIR/nfcorpus-qrels). [BEIR](https://github.com/beir-cellar/beir) |
 | FEVER and FEVEROUS | Wikipedia evidence and table cells | Candidate datasets reviewed. Table-cell grounding and Wikipedia snapshot evaluation are outstanding. [FEVER](https://fever.ai/dataset/fever.html) · [FEVEROUS](https://fever.ai/dataset/feverous.html) |
 | FreshQA | Changing facts and false premises | Synthetic interval checks executed. FreshQA needs an aligned, dated evidence collection. [FreshLLMs](https://github.com/freshllms/freshqa) |
 | LongFact | Long-form factuality | Local extractive proxy evaluated separately. No official SAFE or LongFact score. [LongFact](https://github.com/google-deepmind/long-form-factuality) |

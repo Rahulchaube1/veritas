@@ -1,0 +1,283 @@
+{
+  "$defs": {
+    "Claim": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "verdict": {
+          "enum": [
+            "supported",
+            "refuted",
+            "insufficient",
+            "conflict"
+          ],
+          "title": "Verdict",
+          "type": "string"
+        },
+        "citations": {
+          "items": {
+            "type": "integer"
+          },
+          "title": "Citations",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "text",
+        "verdict",
+        "citations"
+      ],
+      "title": "Claim",
+      "type": "object"
+    },
+    "Edge": {
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "title": "Source",
+          "type": "string"
+        },
+        "target": {
+          "title": "Target",
+          "type": "string"
+        },
+        "relation": {
+          "title": "Relation",
+          "type": "string"
+        },
+        "basis": {
+          "title": "Basis",
+          "type": "string"
+        },
+        "grouped": {
+          "title": "Grouped",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "source",
+        "target",
+        "relation",
+        "basis",
+        "grouped"
+      ],
+      "title": "Edge",
+      "type": "object"
+    },
+    "Evidence": {
+      "additionalProperties": false,
+      "properties": {
+        "doc_id": {
+          "title": "Doc Id",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "publisher": {
+          "title": "Publisher",
+          "type": "string"
+        },
+        "url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Url"
+        },
+        "passage": {
+          "title": "Passage",
+          "type": "string"
+        },
+        "start": {
+          "title": "Start",
+          "type": "integer"
+        },
+        "end": {
+          "title": "End",
+          "type": "integer"
+        },
+        "stance": {
+          "enum": [
+            "support",
+            "contradict",
+            "neutral"
+          ],
+          "title": "Stance",
+          "type": "string"
+        },
+        "strength": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Strength",
+          "type": "number"
+        },
+        "method": {
+          "title": "Method",
+          "type": "string"
+        },
+        "temporal": {
+          "title": "Temporal",
+          "type": "string"
+        },
+        "group": {
+          "title": "Group",
+          "type": "string"
+        },
+        "rank_features": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Rank Features",
+          "type": "object"
+        }
+      },
+      "required": [
+        "doc_id",
+        "title",
+        "publisher",
+        "url",
+        "passage",
+        "start",
+        "end",
+        "stance",
+        "strength",
+        "method",
+        "temporal",
+        "group",
+        "rank_features"
+      ],
+      "title": "Evidence",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "query": {
+      "title": "Query",
+      "type": "string"
+    },
+    "answer": {
+      "title": "Answer",
+      "type": "string"
+    },
+    "claims": {
+      "items": {
+        "$ref": "#/$defs/Claim"
+      },
+      "title": "Claims",
+      "type": "array"
+    },
+    "evidence": {
+      "items": {
+        "$ref": "#/$defs/Evidence"
+      },
+      "title": "Evidence",
+      "type": "array"
+    },
+    "source_dependencies": {
+      "items": {
+        "$ref": "#/$defs/Edge"
+      },
+      "title": "Source Dependencies",
+      "type": "array"
+    },
+    "contradictions": {
+      "items": {
+        "type": "integer"
+      },
+      "title": "Contradictions",
+      "type": "array"
+    },
+    "temporal_constraints": {
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "title": "Temporal Constraints",
+      "type": "object"
+    },
+    "confidence": {
+      "anyOf": [
+        {
+          "maximum": 1,
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Confidence"
+    },
+    "confidence_target": {
+      "title": "Confidence Target",
+      "type": "string"
+    },
+    "evidence_balance": {
+      "title": "Evidence Balance",
+      "type": "number"
+    },
+    "abstained": {
+      "title": "Abstained",
+      "type": "boolean"
+    },
+    "search_budget_used": {
+      "title": "Search Budget Used",
+      "type": "integer"
+    },
+    "documents_examined": {
+      "title": "Documents Examined",
+      "type": "integer"
+    },
+    "latency_ms": {
+      "title": "Latency Ms",
+      "type": "number"
+    },
+    "actions": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Actions",
+      "type": "array"
+    }
+  },
+  "required": [
+    "query",
+    "answer",
+    "claims",
+    "evidence",
+    "source_dependencies",
+    "contradictions",
+    "temporal_constraints",
+    "confidence_target",
+    "evidence_balance",
+    "abstained",
+    "search_budget_used",
+    "documents_examined",
+    "latency_ms",
+    "actions"
+  ],
+  "title": "Result",
+  "type": "object"
+}

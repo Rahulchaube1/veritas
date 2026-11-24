@@ -8,3 +8,5 @@
 6. Check each cited span against the current document snapshot before emitting an extractive claim verdict. A valid character span can still be semantically irrelevant. External rationale alignment measures this failure.
 
 The output uses zero-based positions in the evidence array for citations and contradictions. A graph edge points to a comparison document. Chronology orders comparisons where dates exist. Group membership expresses a conservative aggregation decision rather than proof of authorship or copying. [Implementation](../src/veritas/core.py)
+
+The verify endpoint also splits sentence-separated assertions and shares a single retrieval budget across them. Deep search can follow locally indexed citation IDs and expand a query using terms from the leading document title. Composite reasoning from unrelated sentences remains an open evaluation target.

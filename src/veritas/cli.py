@@ -8,7 +8,7 @@ from .core import Veritas
 
 def main():
     p = argparse.ArgumentParser(prog="veritas")
-    p.add_argument("--config", default="configs/default.yaml")
+    p.add_argument("--config", default=os.getenv("VERITAS_CONFIG"))
     subs = p.add_subparsers(dest="command", required=True)
     idx = subs.add_parser("index")
     idx.add_argument("jsonl", type=Path)
@@ -26,7 +26,8 @@ def main():
 
         if args.host not in {"127.0.0.1", "localhost", "::1"} and os.getenv("VERITAS_ENV") != "production":
             p.error("Set VERITAS_ENV=production and VERITAS_TOKEN for a network listener")
-        os.environ["VERITAS_CONFIG"] = args.config
+        if args.config:
+            os.environ["VERITAS_CONFIG"] = args.config
         uvicorn.run("veritas.api:factory", factory=True, host=args.host, port=args.port)
         return
     engine = Veritas.from_config(args.config)

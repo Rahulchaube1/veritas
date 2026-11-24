@@ -79,8 +79,12 @@ def main(confirmatory=False):
         "results/neural_gated.json" if confirmatory else "results/neural_scifact.json",
         dict(
             seed=41 if confirmatory else 17,
-            same_sample_ungated_correct=sum(v == r["gold"] for v, r in zip(ungated, records)),
-            same_sample_ungated_answered=sum(v in {"supported", "refuted"} for v in ungated),
+            same_sample_ungated_correct=sum(v == r["gold"] for v, r in zip(ungated, records))
+            if confirmatory
+            else None,
+            same_sample_ungated_answered=sum(v in {"supported", "refuted"} for v in ungated)
+            if confirmatory
+            else None,
             documents=len(docs),
             sample_size=len(claims),
             answered=len(answered),
