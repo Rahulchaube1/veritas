@@ -1,0 +1,29 @@
+\clearpage
+\section*{Follow-up experiment with software v0.2.0}
+\label{sec:followup}
+\noindent The original study found two failures upstream of the decision rule. A tight verification budget could admit only copies, and a verifier could predict the right scientific verdict without citing a matching rationale. We revisited both with the same document collections.
+
+\paragraph{Recovering distinct and linked observations.}
+We prioritized distinct document texts and temporal states within a candidate prefix of at least 32. The conflict became visible in all 15 copy-count and budget settings, up from seven. Both systems inspected two documents in the one-step, sixteen-copy setting. A primary source beyond the candidate prefix can still be missed. A separate typed rule for English and Spanish counts raised the evidence-verdict score from 300 to 330 on the same 360 synthetic cases. All 30 remaining misses ask about a depot while the evidence establishes a station. Changing that single type in a separate diagnostic recovered 30 of 30 verdicts with both premises cited. Of 180 decisive answers on the original cases, 150 agreed with the simulator's latent truth.
+
+\paragraph{Scientific verification under a fixed retrieval budget.}
+We evaluated all 172 public SciFact development claims outside the earlier 48- and 80-claim neural audits. Each profile received the same document IDs per claim, with a budget of three. The revised profile reranks sentences and applies a larger, FEVER-trained entailment model to at most two eligible sentences per document. Table~\ref{tab:followup} shows the counts. A citation match requires the right document, stance and a cited span contained in an annotated rationale sentence.
+
+\begin{table}[h]
+\centering\small
+\begin{tabular}{lrr}
+\toprule
+Outcome on 172 claims & v0.1 gated & v0.2 scientific\\
+\midrule
+Verdict matches the gold label & 84 & 93\\
+Correct / incorrect decisive answers & 22 / 11 & 34 / 19\\
+Correct decisive answers with a matching citation & 9 & 18\\
+Aligned / emitted citations & 9 / 37 & 18 / 62\\
+\bottomrule
+\end{tabular}
+\caption{Paired scientific follow-up on the remaining public development claims.}
+\label{tab:followup}
+\end{table}
+
+\noindent Twenty-three verdicts improved and fourteen regressed (two-sided exact paired test, $p=.188$). Accuracy among decisive answers fell from 66.7\% to 64.2\% as coverage rose from 19.2\% to 30.8\%. Both models and the public development split limit generalization. The linked study supplies per-claim decisions, character offsets, matching gold sentence indices and commands to reproduce the comparison.\par
+\smallskip\noindent\href{https://github.com/Rahulchaube1/veritas/blob/v0.2.0/docs/verification-v0.2.md}{Versioned evidence, protocol and reproduction commands}

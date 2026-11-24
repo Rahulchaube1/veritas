@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 
 r = json.loads(Path("results/scifact.json").read_text())
-c = json.loads(Path("results/controlled.json").read_text())
+c = json.loads(Path("results/controlled_v2.json").read_text())
 rows = [
     [
         label,
@@ -21,7 +21,7 @@ Path("src/veritas/web/benchmark.json").write_text(
         dict(
             description=f"SciFact · {r['documents']:,} abstracts · {r['retrieval_queries']} evidence-labeled development claims",
             rows=rows,
-            controlled=f"On {c['worlds']} synthetic test cases, the full rule pipeline matched {c['ablations']['full']['verdict_accuracy']:.1%} of evidence labels. The rules abstained on all 300 real SciFact claims.",
+            controlled=f"On {c['worlds']} synthetic test cases, the full rule pipeline matched {c['ablations']['full']['verdict_accuracy']:.1%} of evidence labels. On the 172-claim SciFact comparison, the optional scientific profile made 53 decisive calls, of which 34 matched the gold verdict.",
         ),
         indent=2,
     )

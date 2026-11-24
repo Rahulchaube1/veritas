@@ -1,3 +1,4 @@
+import argparse
 import json
 import sys
 from collections import Counter, defaultdict
@@ -16,8 +17,10 @@ def correct(r, case):
     return (r.claims[0].verdict == "supported") == case["world_truth"]
 
 
-def report():
-    generate()
+def report(output_root: Path):
+    for directory in ["datasets", "models", "results"]:
+        (output_root / directory).mkdir(parents=True, exist_ok=True)
+    generate(output_root / "datasets/veritas_bench.jsonl.gz")
     variants = {
         "full": {},
         "naive_votes": {"dependency": False},
@@ -40,7 +43,7 @@ def report():
             caly.append(correct(r, case))
         engine.close()
     model = IsotonicRegression(out_of_bounds="clip").fit(calx, caly)
-    path = Path("models/synthetic_calibration.json")
+    path = output_root / "models/synthetic_calibration_v2.json"
     path.write_text(
         json.dumps(
             dict(
@@ -58,6 +61,7 @@ def report():
     calibration = []
     pairs = Counter()
     timings = []
+    typed_joins = []
     for i in range(1080, 1440):
         case = world(i)
         engine = Veritas(Config(calibration=path))
@@ -77,6 +81,14 @@ def report():
                         observed = a["id"] in group and b["id"] in group and group[a["id"]] == group[b["id"]]
                         gold = case["groups"][j] == case["groups"][k]
                         pairs[str((observed, gold))] += 1
+        if case["family"] == "two_hop":
+            typed_query = case["query"].replace("The depot managed by", "The station managed by")
+            result = engine.search(typed_query)
+            decision = result.claims[0]
+            typed_joins.append(
+                decision.verdict == "supported"
+                and len({result.evidence[n].doc_id for n in decision.citations}) == 2
+            )
         engine.close()
     p, y, raw = np.array(calibration).T
 
@@ -88,6 +100,10 @@ def report():
 
     out = {
         "worlds": 360,
+        "type_corrected_two_hop": {
+            "total": len(typed_joins),
+            "correct_with_both_documents": sum(typed_joins),
+        },
         "families": {k: np.mean(v) for k, v in by_family.items()},
         "ablations": {
             k: dict(zip(["verdict_accuracy", "coverage", "mean_steps"], np.mean(v, axis=0)))
@@ -122,8 +138,10 @@ def report():
             )
         e.close()
     out["duplicate_injection"] = inject
-    Path("results/controlled.json").write_text(json.dumps(out, indent=2) + "\n")
+    (output_root / "results/controlled_v2.json").write_text(json.dumps(out, indent=2) + "\n")
 
 
 if __name__ == "__main__":
-    report()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--output-root", type=Path, default=Path("."))
+    report(parser.parse_args().output_root)

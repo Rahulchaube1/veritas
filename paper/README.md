@@ -1,6 +1,6 @@
 # Expanded VERITAS technical report
 
-[Read the PDF](veritas.pdf). The report studies software v0.1.0 and adds a paired replay of the two neural configurations on the original 80 evaluation IDs. The expanded report and replay are published on the repository’s main branch.
+[Read the PDF](veritas.pdf). The report studies software v0.1.0 and adds a paired replay of the two neural configurations on the original 80 evaluation IDs. A final page reports the v0.2.0 controlled results and the paired 172-claim scientific comparison. [Follow-up protocol](../docs/verification-v0.2.md) · [Original 30-page edition](https://github.com/Rahulchaube1/veritas/blob/a7634c06f/paper/veritas.pdf)
 
 ## Build the PDF
 

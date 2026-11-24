@@ -9,13 +9,26 @@ SRM Institute of Science and Technology<br>
 Kattankulathur, Tamil Nadu, India<br>
 [RC3649@srmist.edu.in](mailto:RC3649@srmist.edu.in)
 
-[Read the expanded paper (PDF)](paper/veritas.pdf) · [Run in Google Colab](https://colab.research.google.com/github/Rahulchaube1/veritas/blob/main/notebooks/veritas.ipynb) · [Download the software](https://github.com/Rahulchaube1/veritas/releases/tag/v0.1.0) · [Reproduce the results](docs/reproduce.md)
+[Read the research paper and v0.2 follow-up (PDF)](paper/veritas.pdf) · [Run in Google Colab](https://colab.research.google.com/github/Rahulchaube1/veritas/blob/v0.2.0/notebooks/veritas.ipynb) · [Download the software](https://github.com/Rahulchaube1/veritas/releases/tag/v0.2.0) · [Reproduce the results](docs/reproduce.md)
 
 ## The problem in one example
 
 A harbor register says a ferry carries **40 passengers**. An operator notice says **41**, and eight digests copy that notice. Counting pages gives nine votes to one side. A reviewer still has two competing observations. VERITAS groups dependent documents and caps each group’s contribution to each side. If an old register is present, the requested date also determines whether that register can vote.
 
-There is a limit to what grouping can recover. In the recorded experiment with sixteen opposing copies, a ten-document retrieval budget excluded the primary observation. The verifier returned a refutation because it never saw the conflict. The paper gives both the conditional result and this counterexample. [Copy-count experiment](results/controlled.json) · [Candidate-budget experiment](results/candidate_crowding.json)
+There is a limit to what grouping can recover. In the v0.1 experiment with sixteen opposing copies, a ten-document retrieval budget excluded the primary observation. The verifier returned a refutation because it never saw the conflict. The paper gives both the conditional result and this counterexample. [Copy-count experiment](results/controlled.json) · [Candidate-budget experiment](results/candidate_crowding.json)
+
+## What changed in v0.2.0?
+
+The CPU verifier can match exact counts across a controlled English–Spanish vocabulary and combine a named facility’s count with a separate statement identifying its operator, manager or owner. A decisive two-document answer cites both passages. The repository’s default search also gives distinct texts priority within a wider candidate pool.
+
+| Paired measure | Earlier release | v0.2.0 |
+|---|---:|---:|
+| Matching evidence verdicts on the original synthetic cases | 300/360 | **330/360** |
+| Copy-crowding settings where the verifier found the conflict | 7/15 | **15/15** |
+| Correct scientific verdicts with a gold-matching citation | 9/172 | **18/172** |
+| Incorrect decisive scientific answers | 11 | **19** |
+
+The scientific rows compare two optional neural profiles over identical retrieved documents. The revised profile answered more often. Its accuracy among decisive answers went from 22/33 to 34/53. The original synthetic two-hop cases still score 0/30 because their documents identify a station and their queries ask for a depot. The separate, type-corrected diagnostic scored 30/30 with both documents cited. [Study, definitions and per-query evidence](docs/verification-v0.2.md)
 
 ## What is original here?
 
@@ -86,7 +99,7 @@ finally:
 | Stage | Operation | What you can inspect |
 |---|---|---|
 | Retrieve | Rank documents with BM25 and a vector representation. Combine ranks using reciprocal rank fusion. | Document IDs and feature-level ranking scores. |
-| Select passages | Split stored text into exact spans and select up to five per document by token overlap. | Passage, character offsets and source metadata. |
+| Select passages | Split stored text into exact spans and select up to five per document by token overlap, or up to twelve in the scientific profile. | Passage, character offsets and source metadata. |
 | Check time and stance | Determine availability and validity at the query date. Apply exact, negation and numeric rules, with optional neural inference for unresolved passages. | Time state, support/contradict/neutral stance, method and strength. |
 | Group sources | Link identical text or URLs, citations, shared references, quotes, publishers and near duplicates. | Edge type, basis, and whether it joined the documents for voting. |
 | Aggregate | Keep the strongest eligible support and contradiction in each group. Sum the maxima separately. | Group assignments, signed balance and eligible contradictions. |
@@ -102,6 +115,7 @@ The grouping property assumes all earlier evidence remains visible, its eligibil
 |---|---|---|---|
 | [Default](configs/default.yaml) | BM25 and character TF–IDF/LSA | Deterministic rules | Offline indexing, reproducible traces, numeric and temporal examples. |
 | [Neural](configs/neural.yaml) | Multilingual MiniLM, HNSW and an English cross-encoder | Rules plus DeBERTa NLI | CPU experiments on paraphrased assertions. |
+| [Scientific](configs/scientific.yaml) | Same three-document neural backend used in the audit | Sentence reranking and FEVER-trained DeBERTa on eligible passages | Measuring the tradeoff between cited answers and errors on scientific claims. |
 | [Neural with passage filter](configs/neural_gated.yaml) | Same neural retrieval backend | Learned SciFact rationale filter before NLI | Studying citation quality versus how often the system answers. |
 
 ```bash
@@ -113,13 +127,13 @@ veritas --config configs/neural_gated.yaml search "Neptune is the eighth and mos
 
 The model downloader pins upstream revisions. Optional project-trained JSON files contain document relevance weights, the rationale filter, and a synthetic calibrator. That calibrator estimates agreement with simulator truth among decisive answers in the controlled benchmark. It is disabled in the standard search configurations. [Model cards](models/README.md)
 
-## What the experiments found
+## Earlier experiments documented in the paper
 
 | Evaluation | Measured outcome |
 |---|---|
 | SciFact retrieval, 5,183 abstracts and 188 evidence-labeled queries | Mean Recall@10 was **0.930** for BM25, **0.478** for character LSA and **0.864** for rank fusion. [Retrieval measurements](results/scifact.json) |
 | BEIR NFCorpus, 323 test queries | The default hybrid configuration produced mean Recall@10 **0.134** and nDCG@10 **0.264**. [NFCorpus measurements](results/nfcorpus.json) |
-| Synthetic evidence verdicts | **300/360** matched the generator’s evidence labels. Removing grouping or removing time eligibility separately reduced that to **270/360**. Default rules missed all cases in the multilingual and two-hop families. [Ablations](results/controlled.json) |
+| Synthetic evidence verdicts | **300/360** matched the generator’s evidence labels. Removing grouping or removing time eligibility separately reduced that to **270/360**. v0.1 rules missed all cases in the multilingual and two-hop families. [Ablations](results/controlled.json) |
 | Scientific verification with rules | The rule verifier abstained on **all 300** SciFact development claims. It matched the **112** gold insufficient-evidence judgments. [Full evaluation](results/scifact.json) |
 | Paired neural comparison, 80 scientific claims | Without the filter, **22/53** decisive answers were correct and **6/83** citations aligned. With the filter, **11/18** decisive answers were correct and **6/19** citations aligned. [Query-level replay](paper/paired_audit.json) |
 
@@ -137,7 +151,7 @@ The paired replay identifies the practical trade-off. The filter reduced incorre
 | `GET /v1/evidence/{claim_id}` | Read the most recent cached analysis for a claim. |
 | `GET /v1/health`, `/v1/models`, `/v1/metrics` | Inspect corpus size, configured models and process activity. |
 
-The `claims[].citations` values are **zero-based indices into the response’s evidence array**. A conflict can contain evidence on both sides and have no decisive-answer citations. For a time-scoped search, check `evidence[].temporal` before treating a passage as eligible. For historical reproducibility, retain the exact indexed text along with its ID and offsets. [Validated result schema](docs/result-schema.json)
+The `claims[].citations` values are **zero-based indices into the response’s evidence array**. For a derived count, the cited measurement includes an evidence[].premises reference to the relation witness by document ID and character offsets. A conflict can contain evidence on both sides and have no decisive-answer citations. For a time-scoped search, check `evidence[].temporal` before treating a passage as eligible. For historical reproducibility, retain the exact indexed text along with its ID and offsets. [Validated result schema](docs/result-schema.json)
 
 The service binds to loopback by default. The Docker configuration supports a bearer token for remote operation. Indexed URLs are displayed as citations. The optional SearXNG import uses an operator-configured endpoint. Multi-tenant permissions, load testing and real-world source-lineage validation remain open. [Operating limits](SECURITY.md) · [Development status](STATUS.md)
 
@@ -148,5 +162,5 @@ The service binds to loopback by default. The Docker configuration supports a be
 | Follow the train, validation and evaluation splits | [Reproduction guide](docs/reproduce.md) and [dataset card](datasets/README.md) |
 | Recompute the 80-query paired comparison | [Replay script](paper/paired_audit.py) and [per-query records](paper/paired_audit.json) |
 | Read the research argument or rebuild the paper | [Paper PDF](paper/veritas.pdf), [LaTeX source](paper/veritas.tex) and [paper build notes](paper/README.md) |
-| Inspect software checks and measured limitations | [Validation record](results/validation.json) and [theoretical limitations](research/theoretical_limitations.md) |
+| Inspect software checks and measured limitations | [v0.2 validation record](results/validation_v2.json) and [theoretical limitations](research/theoretical_limitations.md) |
 | Cite or reuse the project | [Citation metadata](CITATION.cff), [software license](LICENSE) and [third-party dataset terms](datasets/README.md) |

@@ -8,6 +8,7 @@ from urllib.request import urlopen
 MODELS = {
     "dense": ("paraphrase-multilingual-MiniLM-L12-v2", "2c4055b12046f11709e9df2c122e59ffbdc2f900"),
     "nli": ("nli-deberta-v3-xsmall", "2a4f614a701367a02d51389039afc998faeda637"),
+    "scientific_nli": ("DeBERTa-v3-base-mnli-fever-anli", "72a1ce83a0144efaf828b3c3844320a61197a53d"),
     "rerank": ("ms-marco-MiniLM-L-6-v2", "a09144355adeed5f58c8ed011d209bf8ee5a1fec"),
 }
 

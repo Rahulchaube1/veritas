@@ -143,6 +143,13 @@
           },
           "title": "Rank Features",
           "type": "object"
+        },
+        "premises": {
+          "items": {
+            "$ref": "#/$defs/PassageRef"
+          },
+          "title": "Premises",
+          "type": "array"
         }
       },
       "required": [
@@ -161,6 +168,30 @@
         "rank_features"
       ],
       "title": "Evidence",
+      "type": "object"
+    },
+    "PassageRef": {
+      "additionalProperties": false,
+      "properties": {
+        "doc_id": {
+          "title": "Doc Id",
+          "type": "string"
+        },
+        "start": {
+          "title": "Start",
+          "type": "integer"
+        },
+        "end": {
+          "title": "End",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "doc_id",
+        "start",
+        "end"
+      ],
+      "title": "PassageRef",
       "type": "object"
     }
   },

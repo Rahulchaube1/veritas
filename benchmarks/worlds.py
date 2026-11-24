@@ -108,8 +108,7 @@ def world(i):
     )
 
 
-def generate():
-    path = Path("datasets/veritas_bench.jsonl.gz")
+def generate(path=Path("datasets/veritas_bench.jsonl.gz")):
     with gzip.GzipFile(str(path), "wb", mtime=0) as stream:
         for i in range(1440):
             stream.write((json.dumps(world(i), ensure_ascii=False) + "\n").encode())

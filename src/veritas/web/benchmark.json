@@ -22,5 +22,5 @@
       "0.673"
     ]
   ],
-  "controlled": "On 360 synthetic test cases, the full rule pipeline matched 83.3% of evidence labels. The rules abstained on all 300 real SciFact claims."
+  "controlled": "On 360 synthetic test cases, the full rule pipeline matched 91.7% of evidence labels. On the 172-claim SciFact comparison, the optional scientific profile made 53 decisive calls, of which 34 matched the gold verdict."
 }

@@ -20,6 +20,14 @@ class Config(Strict):
     calibration: Path | None = None
     ranker: Path | None = None
     rationale_gate: Path | None = None
+    scientific_evidence: bool = False
+    diverse_candidates: bool = False
+
+    @model_validator(mode="after")
+    def validate_scientific_models(self):
+        if self.scientific_evidence and (self.model_dir is None or self.rationale_gate is None):
+            raise ValueError("scientific_evidence requires model_dir and rationale_gate")
+        return self
 
 
 class Document(Strict):
@@ -83,6 +91,12 @@ Stance = Literal["support", "contradict", "neutral"]
 Verdict = Literal["supported", "refuted", "insufficient", "conflict"]
 
 
+class PassageRef(Strict):
+    doc_id: str
+    start: int
+    end: int
+
+
 class Evidence(Strict):
     doc_id: str
     title: str
@@ -97,6 +111,7 @@ class Evidence(Strict):
     temporal: str
     group: str
     rank_features: dict[str, float]
+    premises: list[PassageRef] = Field(default_factory=list)
 
 
 class Edge(Strict):

@@ -1,3 +1,4 @@
+import hashlib
 import math
 import re
 from collections import Counter, defaultdict
@@ -29,6 +30,9 @@ def features(query: str, doc: Document) -> list[float]:
 class Index:
     def __init__(self, docs: list[Document], dense=None, rerank=None, weights=None):
         self.docs = docs
+        self.content_keys = {
+            doc.id: hashlib.sha256(" ".join(doc.text.casefold().split()).encode()).digest() for doc in docs
+        }
         self.dense, self.rerank, self.weights = dense, rerank, weights
         self.vec = self.svd = self.ann = None
         self.post: dict[str, list] = defaultdict(list)

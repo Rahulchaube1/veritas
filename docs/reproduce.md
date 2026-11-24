@@ -22,7 +22,7 @@ mypy src/veritas
 pytest --cov=veritas
 bandit -q -r src/veritas -lll
 python -m build
-docker build -t veritas-local:0.1 .
+docker build -t veritas-local:0.2 .
 ```
 
 The container build accepts an optional BuildKit secret named build_ca for deployments using a private package-registry trust root. The release was built using the local system CA bundle supplied through that temporary mount. Supply a private, randomly generated VERITAS_TOKEN of at least 24 characters to Docker Compose. The compose file binds the service to loopback. The indexed sample documents persist in its named volume.
@@ -45,6 +45,10 @@ For SearXNG, set VERITAS_SEARXNG to your authorized HTTPS JSON search endpoint, 
 * One thousand five hundred query bootstrap replicates give the retrieval intervals. Templates repeat across the synthetic splits, so per-row confidence intervals would imply a misleading degree of independence. Neural samples are small and use one split. Gold citation alignment counts a cited passage if it is contained in a gold rationale sentence from the correct document with the predicted stance. Unannotated but valid passages may be counted as misses.
 * The quick-start code and Colab notebook share the actual package implementation. Training code rebuilds the small fitted heads from scratch. Exported artifacts allow inference without training.
 
-## Inspecting results
+## v0.2 measurements
+
+The current controlled experiment writes results/controlled_v2.json and models/synthetic_calibration_v2.json. Use its --output-root option to keep a replay in a separate directory. The v0.2 study supplies the exact commands for both SciFact profiles and the crowding comparison. To use the scientific profile interactively, install the neural extras, fetch dense, rerank and scientific_nli, then pass configs/scientific.yaml to the CLI. [Paired study and commands](verification-v0.2.md)
+
+## Inspecting earlier results
 
 `results/scifact.json` contains lexical, latent, fused and learned retrieval metrics and bootstrap intervals. `results/controlled.json` contains paired component ablations, duplicate injection, synthetic calibration and latency. `results/candidate_crowding.json` varies the allowed prefix independently of copy count. `results/extractive_baselines.json` records gold passage alignment for three extractive generators, a strict verification filter and a separate-search proxy inspired by SAFE. The proxy has a different search cost and does not implement the official SAFE judge. Neural files contain per-query predictions and direct counts. [Measurements](../results/)

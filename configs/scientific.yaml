@@ -1,0 +1,6 @@
+database: .cache/neural.db
+model_dir: .cache/models
+rationale_gate: models/rationale_gate.json
+scientific_evidence: true
+page_size: 3
+max_steps: 5

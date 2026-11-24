@@ -93,7 +93,7 @@ def create_app(engine: Veritas | None = None, token: str | None = None, producti
         if engine is None:
             app.state.engine.close()
 
-    app = FastAPI(title="VERITAS Evidence API", version="0.1.0", lifespan=lifespan)
+    app = FastAPI(title="VERITAS Evidence API", version="0.2.0", lifespan=lifespan)
     app.state.engine = engine or Veritas.from_config(os.getenv("VERITAS_CONFIG"))
     app.add_middleware(Guard, token=token, production=production)
 
@@ -165,6 +165,7 @@ def create_app(engine: Veritas | None = None, token: str | None = None, producti
         return {
             "retrieval": "multilingual MiniLM/HNSW" if e.neural else "BM25 + character TF-IDF/LSA",
             "inference": "DeBERTa ONNX + rules" if e.neural else "conservative statement rules",
+            "scientific_evidence": e.config.scientific_evidence,
             "learned_ranker": bool(e.weights),
             "calibration": e.cal["target"] if e.cal else None,
         }

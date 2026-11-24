@@ -5,6 +5,7 @@ from decimal import Decimal
 
 from scipy.special import softmax
 
+from .quantities import parse_count
 from .retrieval import tokens
 from .schema import Document, Evidence, Stance
 
@@ -46,8 +47,15 @@ def stance(claim: str, passage: str) -> tuple[Stance, float, str]:
     a, b = norm(claim), norm(passage)
     if DIRECTIVE.search(passage):
         return "neutral", 0.0, "instruction_filter"
+    if passage.rstrip().endswith("?") or passage.lstrip().startswith("¿"):
+        return "neutral", 0.0, "question"
     if a and a == b:
         return "support", 1.0, "exact_statement"
+    left, right = parse_count(claim), parse_count(passage)
+    if left and right:
+        if left.site != right.site or left.unit != right.unit:
+            return "neutral", 0.0, "different_quantity"
+        return ("support" if left.number == right.number else "contradict"), 1.0, "normalized_count"
     if NEG.search(a) or NEG.search(b):
         if bool(NEG.search(a)) != bool(NEG.search(b)) and norm(NEG.sub("", a)) == norm(NEG.sub("", b)):
             return "contradict", 1.0, "opposite_negation"
@@ -55,8 +63,10 @@ def stance(claim: str, passage: str) -> tuple[Stance, float, str]:
     av, bv = NUMBER.findall(a), NUMBER.findall(b)
     if (
         len(av) == len(bv) == 1
+        and not (NEG.search(a) or NEG.search(b))
         and not re.search(
-            r"[<>≤≥~]|\b(at least|up to|about|over|under|approximately|more than|less than)\b", a + " " + b
+            r"[<>≤≥~]|\b(at least|at most|up to|about|over|under|approximately|more than|less than|roughly|around|más de|menos de|al menos|como máximo|aproximadamente|no)\b",
+            a + " " + b,
         )
         and NUMBER.sub("#", a) == NUMBER.sub("#", b)
         and av != bv
@@ -69,15 +79,22 @@ def stance(claim: str, passage: str) -> tuple[Stance, float, str]:
     return "neutral", 0.0, "unresolved"
 
 
-def analyze(claim, doc, hit, when, scoped, neural=None, use_time=True, gate=None):
+def analyze(claim, doc, hit, when, scoped, neural=None, use_time=True, gate=None, passage_ranker=None):
     scope = temporal(doc, when, scoped) if use_time else "unspecified"
     pieces = list(passages(doc))
     q = set(tokens(claim))
     pieces.sort(key=lambda x: len(q & set(tokens(x[0]))) / max(1, len(q | set(tokens(x[0])))), reverse=True)
-    selected = pieces[:5]
+    selected = pieces[: 12 if passage_ranker else 5]
     values = [stance(claim, p[0]) for p in selected]
     unknown = [i for i, x in enumerate(values) if x[2] == "unresolved" and len(selected[i][0]) <= 1600]
-    if gate:
+    passage_features = {}
+    if passage_ranker and unknown:
+        from .grounding import select_rationales
+
+        unknown, passage_features = select_rationales(
+            claim, doc.title, selected, unknown, gate, passage_ranker
+        )
+    elif gate:
         from .grounding import relevance
 
         unknown = [
@@ -117,7 +134,7 @@ def analyze(claim, doc, hit, when, scoped, neural=None, use_time=True, gate=None
                 method=method,
                 temporal=scope,
                 group=doc.id,
-                rank_features=hit.features,
+                rank_features={**hit.features, **passage_features.get(i, {})},
             )
         )
     return out

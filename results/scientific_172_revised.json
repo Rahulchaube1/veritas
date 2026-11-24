@@ -1,0 +1,3101 @@
+{
+  "variant": "revised",
+  "index_warmup_seconds": 221.84387504700044,
+  "records": [
+    {
+      "id": 1,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 763.8477809996402,
+      "examined": 3,
+      "doc_ids": [
+        "43385013",
+        "6863070",
+        "82665667"
+      ]
+    },
+    {
+      "id": 3,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 675.1517200000308,
+      "examined": 3,
+      "doc_ids": [
+        "14717500",
+        "2739854",
+        "4632921"
+      ]
+    },
+    {
+      "id": 36,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 1002.0979760001865,
+      "examined": 3,
+      "doc_ids": [
+        "16252863",
+        "33409100",
+        "37424881"
+      ]
+    },
+    {
+      "id": 50,
+      "verdict": "supported",
+      "gold": "supported",
+      "citations": 2,
+      "matched": 1,
+      "citation_spans": [
+        {
+          "doc_id": "12580014",
+          "start": 196,
+          "end": 433,
+          "stance": "support",
+          "gold_sentence_matches": [
+            1
+          ]
+        },
+        {
+          "doc_id": "25738896",
+          "start": 520,
+          "end": 683,
+          "stance": "support",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 856.6343259999485,
+      "examined": 3,
+      "doc_ids": [
+        "12580014",
+        "25738896",
+        "39559521"
+      ]
+    },
+    {
+      "id": 54,
+      "verdict": "refuted",
+      "gold": "refuted",
+      "citations": 1,
+      "matched": 0,
+      "citation_spans": [
+        {
+          "doc_id": "3973445",
+          "start": 131,
+          "end": 165,
+          "stance": "contradict",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 943.5906129992873,
+      "examined": 3,
+      "doc_ids": [
+        "24721866",
+        "3973445",
+        "9752604"
+      ]
+    },
+    {
+      "id": 56,
+      "verdict": "supported",
+      "gold": "supported",
+      "citations": 1,
+      "matched": 1,
+      "citation_spans": [
+        {
+          "doc_id": "4709641",
+          "start": 185,
+          "end": 578,
+          "stance": "support",
+          "gold_sentence_matches": [
+            1
+          ]
+        }
+      ],
+      "latency_ms": 904.4251850000364,
+      "examined": 3,
+      "doc_ids": [
+        "22116439",
+        "22185730",
+        "4709641"
+      ]
+    },
+    {
+      "id": 70,
+      "verdict": "refuted",
+      "gold": "supported",
+      "citations": 2,
+      "matched": 0,
+      "citation_spans": [
+        {
+          "doc_id": "21307488",
+          "start": 382,
+          "end": 562,
+          "stance": "contradict",
+          "gold_sentence_matches": []
+        },
+        {
+          "doc_id": "43880096",
+          "start": 623,
+          "end": 805,
+          "stance": "contradict",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 854.8356279998188,
+      "examined": 3,
+      "doc_ids": [
+        "21307488",
+        "43880096",
+        "4389394"
+      ]
+    },
+    {
+      "id": 72,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 637.4129219993847,
+      "examined": 3,
+      "doc_ids": [
+        "18895793",
+        "2119889",
+        "6076903"
+      ]
+    },
+    {
+      "id": 100,
+      "verdict": "supported",
+      "gold": "supported",
+      "citations": 1,
+      "matched": 1,
+      "citation_spans": [
+        {
+          "doc_id": "4381486",
+          "start": 1152,
+          "end": 1292,
+          "stance": "support",
+          "gold_sentence_matches": [
+            5
+          ]
+        }
+      ],
+      "latency_ms": 732.7265899994018,
+      "examined": 3,
+      "doc_ids": [
+        "25516011",
+        "2701077",
+        "4381486"
+      ]
+    },
+    {
+      "id": 113,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 950.6247690005694,
+      "examined": 3,
+      "doc_ids": [
+        "14584755",
+        "25816994",
+        "6157837"
+      ]
+    },
+    {
+      "id": 118,
+      "verdict": "supported",
+      "gold": "supported",
+      "citations": 1,
+      "matched": 1,
+      "citation_spans": [
+        {
+          "doc_id": "6372244",
+          "start": 0,
+          "end": 183,
+          "stance": "support",
+          "gold_sentence_matches": [
+            0
+          ]
+        }
+      ],
+      "latency_ms": 851.0448489996634,
+      "examined": 3,
+      "doc_ids": [
+        "32454714",
+        "4465735",
+        "6372244"
+      ]
+    },
+    {
+      "id": 124,
+      "verdict": "supported",
+      "gold": "supported",
+      "citations": 1,
+      "matched": 0,
+      "citation_spans": [
+        {
+          "doc_id": "4883040",
+          "start": 1198,
+          "end": 1599,
+          "stance": "support",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 1259.7470399996382,
+      "examined": 3,
+      "doc_ids": [
+        "31363207",
+        "4883040",
+        "7111021"
+      ]
+    },
+    {
+      "id": 127,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 723.490080999909,
+      "examined": 3,
+      "doc_ids": [
+        "21598000",
+        "293661",
+        "38623601"
+      ]
+    },
+    {
+      "id": 130,
+      "verdict": "supported",
+      "gold": "supported",
+      "citations": 1,
+      "matched": 1,
+      "citation_spans": [
+        {
+          "doc_id": "27768226",
+          "start": 119,
+          "end": 250,
+          "stance": "support",
+          "gold_sentence_matches": [
+            2
+          ]
+        }
+      ],
+      "latency_ms": 821.0725219996675,
+      "examined": 3,
+      "doc_ids": [
+        "27768226",
+        "4688277",
+        "6477536"
+      ]
+    },
+    {
+      "id": 133,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 665.2739099999962,
+      "examined": 3,
+      "doc_ids": [
+        "12640810",
+        "16280642",
+        "35660758"
+      ]
+    },
+    {
+      "id": 142,
+      "verdict": "refuted",
+      "gold": "refuted",
+      "citations": 1,
+      "matched": 0,
+      "citation_spans": [
+        {
+          "doc_id": "10582939",
+          "start": 2197,
+          "end": 2689,
+          "stance": "contradict",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 828.1676739998147,
+      "examined": 3,
+      "doc_ids": [
+        "10582939",
+        "24101431",
+        "40164383"
+      ]
+    },
+    {
+      "id": 146,
+      "verdict": "supported",
+      "gold": "supported",
+      "citations": 1,
+      "matched": 0,
+      "citation_spans": [
+        {
+          "doc_id": "10582939",
+          "start": 2197,
+          "end": 2689,
+          "stance": "support",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 969.895827000073,
+      "examined": 3,
+      "doc_ids": [
+        "10582939",
+        "40164383",
+        "7506409"
+      ]
+    },
+    {
+      "id": 163,
+      "verdict": "supported",
+      "gold": "supported",
+      "citations": 1,
+      "matched": 0,
+      "citation_spans": [
+        {
+          "doc_id": "43220289",
+          "start": 1465,
+          "end": 1629,
+          "stance": "support",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 1163.6990880006124,
+      "examined": 3,
+      "doc_ids": [
+        "18872233",
+        "19071857",
+        "43220289"
+      ]
+    },
+    {
+      "id": 183,
+      "verdict": "insufficient",
+      "gold": "refuted",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 670.6263189998936,
+      "examined": 3,
+      "doc_ids": [
+        "10078024",
+        "12827098",
+        "46193388"
+      ]
+    },
+    {
+      "id": 198,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 628.951421000238,
+      "examined": 3,
+      "doc_ids": [
+        "10189634",
+        "2177022",
+        "40590358"
+      ]
+    },
+    {
+      "id": 208,
+      "verdict": "refuted",
+      "gold": "supported",
+      "citations": 2,
+      "matched": 0,
+      "citation_spans": [
+        {
+          "doc_id": "13519661",
+          "start": 152,
+          "end": 313,
+          "stance": "contradict",
+          "gold_sentence_matches": []
+        },
+        {
+          "doc_id": "21439640",
+          "start": 1555,
+          "end": 1733,
+          "stance": "contradict",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 863.9644900003987,
+      "examined": 3,
+      "doc_ids": [
+        "13519661",
+        "21439640",
+        "7821634"
+      ]
+    },
+    {
+      "id": 218,
+      "verdict": "refuted",
+      "gold": "supported",
+      "citations": 1,
+      "matched": 0,
+      "citation_spans": [
+        {
+          "doc_id": "21366394",
+          "start": 463,
+          "end": 681,
+          "stance": "contradict",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 929.6170979996532,
+      "examined": 3,
+      "doc_ids": [
+        "20311968",
+        "21366394",
+        "883747"
+      ]
+    },
+    {
+      "id": 219,
+      "verdict": "supported",
+      "gold": "refuted",
+      "citations": 1,
+      "matched": 0,
+      "citation_spans": [
+        {
+          "doc_id": "21366394",
+          "start": 463,
+          "end": 681,
+          "stance": "support",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 1026.0369120005635,
+      "examined": 3,
+      "doc_ids": [
+        "20311968",
+        "21366394",
+        "883747"
+      ]
+    },
+    {
+      "id": 232,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 988.4253519994672,
+      "examined": 3,
+      "doc_ids": [
+        "10536636",
+        "29090823",
+        "7655029"
+      ]
+    },
+    {
+      "id": 233,
+      "verdict": "insufficient",
+      "gold": "refuted",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 745.8656259996133,
+      "examined": 3,
+      "doc_ids": [
+        "23581096",
+        "36708463",
+        "4388470"
+      ]
+    },
+    {
+      "id": 238,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 748.494935999588,
+      "examined": 3,
+      "doc_ids": [
+        "21601459",
+        "28704738",
+        "53211308"
+      ]
+    },
+    {
+      "id": 248,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 624.510681999709,
+      "examined": 3,
+      "doc_ids": [
+        "14865329",
+        "1568684",
+        "26902591"
+      ]
+    },
+    {
+      "id": 249,
+      "verdict": "refuted",
+      "gold": "refuted",
+      "citations": 1,
+      "matched": 1,
+      "citation_spans": [
+        {
+          "doc_id": "1568684",
+          "start": 590,
+          "end": 659,
+          "stance": "contradict",
+          "gold_sentence_matches": [
+            4
+          ]
+        }
+      ],
+      "latency_ms": 795.1021319995561,
+      "examined": 3,
+      "doc_ids": [
+        "1568684",
+        "23369842",
+        "25050364"
+      ]
+    },
+    {
+      "id": 261,
+      "verdict": "supported",
+      "gold": "supported",
+      "citations": 1,
+      "matched": 0,
+      "citation_spans": [
+        {
+          "doc_id": "32322418",
+          "start": 1481,
+          "end": 1759,
+          "stance": "support",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 972.4465050003346,
+      "examined": 3,
+      "doc_ids": [
+        "1122279",
+        "25822299",
+        "32322418"
+      ]
+    },
+    {
+      "id": 268,
+      "verdict": "refuted",
+      "gold": "insufficient",
+      "citations": 1,
+      "matched": 0,
+      "citation_spans": [
+        {
+          "doc_id": "36838958",
+          "start": 690,
+          "end": 893,
+          "stance": "contradict",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 790.8845210004074,
+      "examined": 3,
+      "doc_ids": [
+        "1568684",
+        "36838958",
+        "970012"
+      ]
+    },
+    {
+      "id": 269,
+      "verdict": "conflict",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 799.1776519993437,
+      "examined": 3,
+      "doc_ids": [
+        "1568684",
+        "36838958",
+        "970012"
+      ]
+    },
+    {
+      "id": 274,
+      "verdict": "supported",
+      "gold": "refuted",
+      "citations": 1,
+      "matched": 0,
+      "citation_spans": [
+        {
+          "doc_id": "11614737",
+          "start": 1439,
+          "end": 1722,
+          "stance": "support",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 1106.8171670003721,
+      "examined": 3,
+      "doc_ids": [
+        "11614737",
+        "24019260",
+        "5114940"
+      ]
+    },
+    {
+      "id": 279,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 904.1068840006119,
+      "examined": 3,
+      "doc_ids": [
+        "14376683",
+        "37677954",
+        "83667891"
+      ]
+    },
+    {
+      "id": 295,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 897.2751110004538,
+      "examined": 3,
+      "doc_ids": [
+        "12631182",
+        "22791348",
+        "5979056"
+      ]
+    },
+    {
+      "id": 300,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 0.09947000035026576,
+      "examined": 0,
+      "doc_ids": []
+    },
+    {
+      "id": 327,
+      "verdict": "supported",
+      "gold": "supported",
+      "citations": 1,
+      "matched": 1,
+      "citation_spans": [
+        {
+          "doc_id": "17997584",
+          "start": 371,
+          "end": 574,
+          "stance": "support",
+          "gold_sentence_matches": [
+            2
+          ]
+        }
+      ],
+      "latency_ms": 764.3949339999381,
+      "examined": 3,
+      "doc_ids": [
+        "15405204",
+        "17997584",
+        "3984231"
+      ]
+    },
+    {
+      "id": 338,
+      "verdict": "conflict",
+      "gold": "refuted",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 1061.5999379997447,
+      "examined": 3,
+      "doc_ids": [
+        "23349986",
+        "23783727",
+        "24211561"
+      ]
+    },
+    {
+      "id": 343,
+      "verdict": "supported",
+      "gold": "supported",
+      "citations": 2,
+      "matched": 0,
+      "citation_spans": [
+        {
+          "doc_id": "23783727",
+          "start": 0,
+          "end": 167,
+          "stance": "support",
+          "gold_sentence_matches": []
+        },
+        {
+          "doc_id": "6158879",
+          "start": 0,
+          "end": 182,
+          "stance": "support",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 951.7837109997345,
+      "examined": 3,
+      "doc_ids": [
+        "23783727",
+        "6158879",
+        "7873737"
+      ]
+    },
+    {
+      "id": 362,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 783.152199000142,
+      "examined": 3,
+      "doc_ids": [
+        "15488881",
+        "38587347",
+        "5003144"
+      ]
+    },
+    {
+      "id": 384,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 781.076098000085,
+      "examined": 3,
+      "doc_ids": [
+        "25451374",
+        "51972698",
+        "8582337"
+      ]
+    },
+    {
+      "id": 385,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 761.9160760004888,
+      "examined": 3,
+      "doc_ids": [
+        "1032372",
+        "9767444",
+        "9955779"
+      ]
+    },
+    {
+      "id": 388,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 669.6904939999513,
+      "examined": 3,
+      "doc_ids": [
+        "1148122",
+        "21602220",
+        "22908536"
+      ]
+    },
+    {
+      "id": 410,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 659.210757999972,
+      "examined": 3,
+      "doc_ids": [
+        "1410197",
+        "14924526",
+        "15889329"
+      ]
+    },
+    {
+      "id": 415,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 911.7447560001892,
+      "examined": 3,
+      "doc_ids": [
+        "20937018",
+        "24906548",
+        "4709641"
+      ]
+    },
+    {
+      "id": 421,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 712.3541989994919,
+      "examined": 3,
+      "doc_ids": [
+        "1065627",
+        "14768471",
+        "8702697"
+      ]
+    },
+    {
+      "id": 436,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 733.4445269998469,
+      "examined": 3,
+      "doc_ids": [
+        "12207340",
+        "14332945",
+        "14637235"
+      ]
+    },
+    {
+      "id": 437,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 699.9544540003626,
+      "examined": 3,
+      "doc_ids": [
+        "3391547",
+        "39851630",
+        "5765455"
+      ]
+    },
+    {
+      "id": 440,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 666.1690840001029,
+      "examined": 3,
+      "doc_ids": [
+        "18575183",
+        "4423559",
+        "4932668"
+      ]
+    },
+    {
+      "id": 443,
+      "verdict": "supported",
+      "gold": "supported",
+      "citations": 1,
+      "matched": 1,
+      "citation_spans": [
+        {
+          "doc_id": "10165258",
+          "start": 914,
+          "end": 1034,
+          "stance": "support",
+          "gold_sentence_matches": [
+            6
+          ]
+        }
+      ],
+      "latency_ms": 830.8490370000072,
+      "examined": 3,
+      "doc_ids": [
+        "10165258",
+        "11900630",
+        "19583924"
+      ]
+    },
+    {
+      "id": 452,
+      "verdict": "refuted",
+      "gold": "refuted",
+      "citations": 1,
+      "matched": 0,
+      "citation_spans": [
+        {
+          "doc_id": "16237005",
+          "start": 402,
+          "end": 529,
+          "stance": "contradict",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 662.8420910001296,
+      "examined": 3,
+      "doc_ids": [
+        "16237005",
+        "464511",
+        "9154703"
+      ]
+    },
+    {
+      "id": 478,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 603.2023570005549,
+      "examined": 3,
+      "doc_ids": [
+        "13798951",
+        "14767844",
+        "34854444"
+      ]
+    },
+    {
+      "id": 491,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 753.7365019998106,
+      "examined": 3,
+      "doc_ids": [
+        "30805636",
+        "56893404",
+        "834336"
+      ]
+    },
+    {
+      "id": 501,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 681.227702999422,
+      "examined": 3,
+      "doc_ids": [
+        "17930286",
+        "24865781",
+        "32743723"
+      ]
+    },
+    {
+      "id": 508,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 639.7161920003782,
+      "examined": 3,
+      "doc_ids": [
+        "18374364",
+        "25516011",
+        "2701077"
+      ]
+    },
+    {
+      "id": 513,
+      "verdict": "refuted",
+      "gold": "refuted",
+      "citations": 1,
+      "matched": 0,
+      "citation_spans": [
+        {
+          "doc_id": "12770738",
+          "start": 1796,
+          "end": 1984,
+          "stance": "contradict",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 929.1511989995342,
+      "examined": 3,
+      "doc_ids": [
+        "12770738",
+        "13230773",
+        "6525844"
+      ]
+    },
+    {
+      "id": 514,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 806.3715050002429,
+      "examined": 3,
+      "doc_ids": [
+        "16256507",
+        "36960449",
+        "9555784"
+      ]
+    },
+    {
+      "id": 516,
+      "verdict": "refuted",
+      "gold": "refuted",
+      "citations": 2,
+      "matched": 0,
+      "citation_spans": [
+        {
+          "doc_id": "29564505",
+          "start": 2820,
+          "end": 3080,
+          "stance": "contradict",
+          "gold_sentence_matches": []
+        },
+        {
+          "doc_id": "26107000",
+          "start": 0,
+          "end": 101,
+          "stance": "contradict",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 1110.2565410001262,
+      "examined": 3,
+      "doc_ids": [
+        "21287352",
+        "26107000",
+        "29564505"
+      ]
+    },
+    {
+      "id": 517,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 911.1018970006626,
+      "examined": 3,
+      "doc_ids": [
+        "23577867",
+        "25599283",
+        "7454794"
+      ]
+    },
+    {
+      "id": 525,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 764.0685569995185,
+      "examined": 3,
+      "doc_ids": [
+        "13639330",
+        "29788648",
+        "4547102"
+      ]
+    },
+    {
+      "id": 528,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 947.8288359996441,
+      "examined": 3,
+      "doc_ids": [
+        "23326722",
+        "24512064",
+        "5476778"
+      ]
+    },
+    {
+      "id": 532,
+      "verdict": "insufficient",
+      "gold": "refuted",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 991.3990179993561,
+      "examined": 3,
+      "doc_ids": [
+        "12991445",
+        "23783727",
+        "9846940"
+      ]
+    },
+    {
+      "id": 533,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 921.6367310000351,
+      "examined": 3,
+      "doc_ids": [
+        "12991445",
+        "23783727",
+        "79231308"
+      ]
+    },
+    {
+      "id": 535,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 917.0705800006544,
+      "examined": 3,
+      "doc_ids": [
+        "11953232",
+        "2138843",
+        "27428509"
+      ]
+    },
+    {
+      "id": 540,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 795.043412999803,
+      "examined": 3,
+      "doc_ids": [
+        "11886686",
+        "17150648",
+        "2225918"
+      ]
+    },
+    {
+      "id": 544,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 632.5976440002705,
+      "examined": 3,
+      "doc_ids": [
+        "11784947",
+        "6404801",
+        "6820680"
+      ]
+    },
+    {
+      "id": 549,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 619.8749749992203,
+      "examined": 3,
+      "doc_ids": [
+        "2274272",
+        "30437264",
+        "7820043"
+      ]
+    },
+    {
+      "id": 552,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 796.8080239998017,
+      "examined": 3,
+      "doc_ids": [
+        "13578199",
+        "1471041",
+        "17695748"
+      ]
+    },
+    {
+      "id": 560,
+      "verdict": "supported",
+      "gold": "insufficient",
+      "citations": 1,
+      "matched": 0,
+      "citation_spans": [
+        {
+          "doc_id": "11233339",
+          "start": 183,
+          "end": 457,
+          "stance": "support",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 874.5423599993956,
+      "examined": 3,
+      "doc_ids": [
+        "11233339",
+        "29347970",
+        "40312663"
+      ]
+    },
+    {
+      "id": 569,
+      "verdict": "supported",
+      "gold": "supported",
+      "citations": 1,
+      "matched": 1,
+      "citation_spans": [
+        {
+          "doc_id": "23460562",
+          "start": 703,
+          "end": 938,
+          "stance": "support",
+          "gold_sentence_matches": [
+            4
+          ]
+        }
+      ],
+      "latency_ms": 992.3171740001635,
+      "examined": 3,
+      "doc_ids": [
+        "23460562",
+        "3155731",
+        "37311371"
+      ]
+    },
+    {
+      "id": 575,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 633.2170589994348,
+      "examined": 3,
+      "doc_ids": [
+        "10300888",
+        "36904081",
+        "9704467"
+      ]
+    },
+    {
+      "id": 577,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 0.06178300009196391,
+      "examined": 0,
+      "doc_ids": []
+    },
+    {
+      "id": 578,
+      "verdict": "supported",
+      "gold": "refuted",
+      "citations": 1,
+      "matched": 0,
+      "citation_spans": [
+        {
+          "doc_id": "8764879",
+          "start": 1053,
+          "end": 1192,
+          "stance": "support",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 869.4387019995702,
+      "examined": 3,
+      "doc_ids": [
+        "10698739",
+        "3559136",
+        "8764879"
+      ]
+    },
+    {
+      "id": 613,
+      "verdict": "supported",
+      "gold": "supported",
+      "citations": 1,
+      "matched": 0,
+      "citation_spans": [
+        {
+          "doc_id": "9638032",
+          "start": 404,
+          "end": 653,
+          "stance": "support",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 760.6769900003201,
+      "examined": 3,
+      "doc_ids": [
+        "33911859",
+        "9638032",
+        "9748934"
+      ]
+    },
+    {
+      "id": 619,
+      "verdict": "insufficient",
+      "gold": "refuted",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 686.1663079998834,
+      "examined": 3,
+      "doc_ids": [
+        "20888849",
+        "22621251",
+        "9929089"
+      ]
+    },
+    {
+      "id": 623,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 890.7278970000334,
+      "examined": 3,
+      "doc_ids": [
+        "22843838",
+        "25599283",
+        "4462079"
+      ]
+    },
+    {
+      "id": 628,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 1040.2165840005182,
+      "examined": 3,
+      "doc_ids": [
+        "20996244",
+        "24512064",
+        "29134911"
+      ]
+    },
+    {
+      "id": 636,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 1075.602591000461,
+      "examined": 3,
+      "doc_ids": [
+        "19752008",
+        "24294572",
+        "42708716"
+      ]
+    },
+    {
+      "id": 637,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 630.3614290000041,
+      "examined": 3,
+      "doc_ids": [
+        "25649714",
+        "31019903",
+        "6129301"
+      ]
+    },
+    {
+      "id": 641,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 774.0230110002813,
+      "examined": 3,
+      "doc_ids": [
+        "24346598",
+        "24865781",
+        "5912283"
+      ]
+    },
+    {
+      "id": 644,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 927.2695850004311,
+      "examined": 3,
+      "doc_ids": [
+        "120626",
+        "13619127",
+        "24921368"
+      ]
+    },
+    {
+      "id": 659,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 792.5855249995948,
+      "examined": 3,
+      "doc_ids": [
+        "1215116",
+        "14834714",
+        "34481589"
+      ]
+    },
+    {
+      "id": 674,
+      "verdict": "refuted",
+      "gold": "refuted",
+      "citations": 2,
+      "matched": 1,
+      "citation_spans": [
+        {
+          "doc_id": "2095573",
+          "start": 0,
+          "end": 90,
+          "stance": "contradict",
+          "gold_sentence_matches": [
+            0
+          ]
+        },
+        {
+          "doc_id": "30981192",
+          "start": 0,
+          "end": 160,
+          "stance": "contradict",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 771.2985170001048,
+      "examined": 3,
+      "doc_ids": [
+        "2095573",
+        "30981192",
+        "7662206"
+      ]
+    },
+    {
+      "id": 684,
+      "verdict": "refuted",
+      "gold": "insufficient",
+      "citations": 1,
+      "matched": 0,
+      "citation_spans": [
+        {
+          "doc_id": "12881593",
+          "start": 0,
+          "end": 119,
+          "stance": "contradict",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 665.8742379995601,
+      "examined": 3,
+      "doc_ids": [
+        "12881593",
+        "17416520",
+        "34386619"
+      ]
+    },
+    {
+      "id": 690,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 847.1659560000262,
+      "examined": 3,
+      "doc_ids": [
+        "18750453",
+        "21870716",
+        "75636923"
+      ]
+    },
+    {
+      "id": 692,
+      "verdict": "insufficient",
+      "gold": "refuted",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 515.7086629997139,
+      "examined": 3,
+      "doc_ids": [
+        "24088502",
+        "27049238",
+        "27243019"
+      ]
+    },
+    {
+      "id": 700,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 499.204261000159,
+      "examined": 3,
+      "doc_ids": [
+        "16557565",
+        "1669173",
+        "4350400"
+      ]
+    },
+    {
+      "id": 702,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 538.8755710000623,
+      "examined": 3,
+      "doc_ids": [
+        "16557565",
+        "20868160",
+        "38675228"
+      ]
+    },
+    {
+      "id": 715,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 744.57309599984,
+      "examined": 3,
+      "doc_ids": [
+        "10024681",
+        "13290521",
+        "19358586"
+      ]
+    },
+    {
+      "id": 716,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 575.6310900005701,
+      "examined": 3,
+      "doc_ids": [
+        "13290521",
+        "17544977",
+        "39580129"
+      ]
+    },
+    {
+      "id": 718,
+      "verdict": "insufficient",
+      "gold": "refuted",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 514.8374290001811,
+      "examined": 3,
+      "doc_ids": [
+        "17587795",
+        "22038539",
+        "9993008"
+      ]
+    },
+    {
+      "id": 721,
+      "verdict": "supported",
+      "gold": "supported",
+      "citations": 1,
+      "matched": 1,
+      "citation_spans": [
+        {
+          "doc_id": "1834762",
+          "start": 719,
+          "end": 876,
+          "stance": "support",
+          "gold_sentence_matches": [
+            4
+          ]
+        }
+      ],
+      "latency_ms": 728.9849759999925,
+      "examined": 3,
+      "doc_ids": [
+        "10559501",
+        "12670680",
+        "1834762"
+      ]
+    },
+    {
+      "id": 727,
+      "verdict": "refuted",
+      "gold": "insufficient",
+      "citations": 1,
+      "matched": 0,
+      "citation_spans": [
+        {
+          "doc_id": "7948486",
+          "start": 273,
+          "end": 507,
+          "stance": "contradict",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 695.8195649995105,
+      "examined": 3,
+      "doc_ids": [
+        "22406695",
+        "36444198",
+        "7948486"
+      ]
+    },
+    {
+      "id": 728,
+      "verdict": "refuted",
+      "gold": "refuted",
+      "citations": 1,
+      "matched": 0,
+      "citation_spans": [
+        {
+          "doc_id": "7948486",
+          "start": 273,
+          "end": 507,
+          "stance": "contradict",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 658.2802149996496,
+      "examined": 3,
+      "doc_ids": [
+        "22406695",
+        "36444198",
+        "7948486"
+      ]
+    },
+    {
+      "id": 742,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 625.4374230002213,
+      "examined": 3,
+      "doc_ids": [
+        "10576136",
+        "3984231",
+        "6158879"
+      ]
+    },
+    {
+      "id": 743,
+      "verdict": "insufficient",
+      "gold": "refuted",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 617.9760519999036,
+      "examined": 3,
+      "doc_ids": [
+        "10576136",
+        "3984231",
+        "6158879"
+      ]
+    },
+    {
+      "id": 744,
+      "verdict": "supported",
+      "gold": "supported",
+      "citations": 2,
+      "matched": 1,
+      "citation_spans": [
+        {
+          "doc_id": "4138659",
+          "start": 366,
+          "end": 476,
+          "stance": "support",
+          "gold_sentence_matches": []
+        },
+        {
+          "doc_id": "8460275",
+          "start": 264,
+          "end": 364,
+          "stance": "support",
+          "gold_sentence_matches": [
+            2
+          ]
+        }
+      ],
+      "latency_ms": 676.5059079998537,
+      "examined": 3,
+      "doc_ids": [
+        "4138659",
+        "6454371",
+        "8460275"
+      ]
+    },
+    {
+      "id": 759,
+      "verdict": "supported",
+      "gold": "refuted",
+      "citations": 1,
+      "matched": 0,
+      "citation_spans": [
+        {
+          "doc_id": "3929361",
+          "start": 1624,
+          "end": 2200,
+          "stance": "support",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 1078.3328369998344,
+      "examined": 3,
+      "doc_ids": [
+        "12409683",
+        "1805641",
+        "3929361"
+      ]
+    },
+    {
+      "id": 768,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 602.5796359999731,
+      "examined": 3,
+      "doc_ids": [
+        "1373287",
+        "19497526",
+        "9257019"
+      ]
+    },
+    {
+      "id": 781,
+      "verdict": "supported",
+      "gold": "refuted",
+      "citations": 2,
+      "matched": 0,
+      "citation_spans": [
+        {
+          "doc_id": "8246922",
+          "start": 436,
+          "end": 540,
+          "stance": "support",
+          "gold_sentence_matches": []
+        },
+        {
+          "doc_id": "24338780",
+          "start": 199,
+          "end": 427,
+          "stance": "support",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 746.755543999825,
+      "examined": 3,
+      "doc_ids": [
+        "1386103",
+        "24338780",
+        "8246922"
+      ]
+    },
+    {
+      "id": 783,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 725.7020859997283,
+      "examined": 3,
+      "doc_ids": [
+        "10559501",
+        "39084565",
+        "8246922"
+      ]
+    },
+    {
+      "id": 785,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 571.9104910003807,
+      "examined": 3,
+      "doc_ids": [
+        "54440",
+        "6173523",
+        "8202880"
+      ]
+    },
+    {
+      "id": 793,
+      "verdict": "insufficient",
+      "gold": "refuted",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 479.3650110004819,
+      "examined": 3,
+      "doc_ids": [
+        "28249680",
+        "8425533",
+        "8551160"
+      ]
+    },
+    {
+      "id": 808,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 506.54871400001866,
+      "examined": 3,
+      "doc_ids": [
+        "24307695",
+        "36606083",
+        "4313478"
+      ]
+    },
+    {
+      "id": 820,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 581.6255099998671,
+      "examined": 3,
+      "doc_ids": [
+        "19485243",
+        "39729277",
+        "5116145"
+      ]
+    },
+    {
+      "id": 821,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 483.6364330003562,
+      "examined": 3,
+      "doc_ids": [
+        "18467982",
+        "19485243",
+        "5116145"
+      ]
+    },
+    {
+      "id": 823,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 791.330210000524,
+      "examined": 3,
+      "doc_ids": [
+        "15319019",
+        "2319305",
+        "9505402"
+      ]
+    },
+    {
+      "id": 830,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 733.4234150002885,
+      "examined": 3,
+      "doc_ids": [
+        "12737132",
+        "52873726",
+        "735130"
+      ]
+    },
+    {
+      "id": 834,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 578.7645359996532,
+      "examined": 3,
+      "doc_ids": [
+        "12631182",
+        "23100962",
+        "6580081"
+      ]
+    },
+    {
+      "id": 837,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 779.879341999731,
+      "examined": 3,
+      "doc_ids": [
+        "16346504",
+        "1780819",
+        "6121668"
+      ]
+    },
+    {
+      "id": 845,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 702.3291410005186,
+      "examined": 3,
+      "doc_ids": [
+        "14853989",
+        "29399239",
+        "9878167"
+      ]
+    },
+    {
+      "id": 852,
+      "verdict": "insufficient",
+      "gold": "refuted",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 755.4662749998897,
+      "examined": 3,
+      "doc_ids": [
+        "13843341",
+        "474325",
+        "8190282"
+      ]
+    },
+    {
+      "id": 859,
+      "verdict": "insufficient",
+      "gold": "refuted",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 714.3818380000084,
+      "examined": 3,
+      "doc_ids": [
+        "1982286",
+        "22049489",
+        "57783564"
+      ]
+    },
+    {
+      "id": 879,
+      "verdict": "refuted",
+      "gold": "refuted",
+      "citations": 1,
+      "matched": 0,
+      "citation_spans": [
+        {
+          "doc_id": "8426046",
+          "start": 219,
+          "end": 406,
+          "stance": "contradict",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 620.1598549996561,
+      "examined": 3,
+      "doc_ids": [
+        "15893330",
+        "22896970",
+        "8426046"
+      ]
+    },
+    {
+      "id": 880,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 638.0726540000978,
+      "examined": 3,
+      "doc_ids": [
+        "18467982",
+        "40721190",
+        "8426046"
+      ]
+    },
+    {
+      "id": 882,
+      "verdict": "refuted",
+      "gold": "refuted",
+      "citations": 1,
+      "matched": 1,
+      "citation_spans": [
+        {
+          "doc_id": "14803797",
+          "start": 372,
+          "end": 524,
+          "stance": "contradict",
+          "gold_sentence_matches": [
+            2
+          ]
+        }
+      ],
+      "latency_ms": 590.7958790003249,
+      "examined": 3,
+      "doc_ids": [
+        "11181416",
+        "14803797",
+        "6327940"
+      ]
+    },
+    {
+      "id": 887,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 516.9482860001153,
+      "examined": 3,
+      "doc_ids": [
+        "2140513",
+        "7506409",
+        "9641846"
+      ]
+    },
+    {
+      "id": 904,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 616.0310690002007,
+      "examined": 3,
+      "doc_ids": [
+        "3506723",
+        "5700349",
+        "7370282"
+      ]
+    },
+    {
+      "id": 922,
+      "verdict": "refuted",
+      "gold": "refuted",
+      "citations": 1,
+      "matched": 0,
+      "citation_spans": [
+        {
+          "doc_id": "17077004",
+          "start": 1543,
+          "end": 1682,
+          "stance": "contradict",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 638.915409999754,
+      "examined": 3,
+      "doc_ids": [
+        "11230569",
+        "17077004",
+        "23304931"
+      ]
+    },
+    {
+      "id": 936,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 614.779501999692,
+      "examined": 3,
+      "doc_ids": [
+        "5483793",
+        "8903143",
+        "994800"
+      ]
+    },
+    {
+      "id": 957,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 539.9110509997627,
+      "examined": 3,
+      "doc_ids": [
+        "16355392",
+        "18041692",
+        "6308416"
+      ]
+    },
+    {
+      "id": 967,
+      "verdict": "supported",
+      "gold": "supported",
+      "citations": 1,
+      "matched": 1,
+      "citation_spans": [
+        {
+          "doc_id": "8997410",
+          "start": 440,
+          "end": 752,
+          "stance": "support",
+          "gold_sentence_matches": [
+            2
+          ]
+        }
+      ],
+      "latency_ms": 576.5303100006349,
+      "examined": 3,
+      "doc_ids": [
+        "2119889",
+        "22767022",
+        "8997410"
+      ]
+    },
+    {
+      "id": 982,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 613.1031889999576,
+      "examined": 3,
+      "doc_ids": [
+        "2988714",
+        "4362729",
+        "6422576"
+      ]
+    },
+    {
+      "id": 993,
+      "verdict": "insufficient",
+      "gold": "refuted",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 1020.6793159995868,
+      "examined": 3,
+      "doc_ids": [
+        "16472469",
+        "25842866",
+        "26118532"
+      ]
+    },
+    {
+      "id": 1014,
+      "verdict": "refuted",
+      "gold": "insufficient",
+      "citations": 1,
+      "matched": 0,
+      "citation_spans": [
+        {
+          "doc_id": "6277638",
+          "start": 771,
+          "end": 953,
+          "stance": "contradict",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 774.6169980000559,
+      "examined": 3,
+      "doc_ids": [
+        "15615957",
+        "24632480",
+        "6277638"
+      ]
+    },
+    {
+      "id": 1019,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 1047.523741999612,
+      "examined": 3,
+      "doc_ids": [
+        "11603066",
+        "1225513",
+        "12370190"
+      ]
+    },
+    {
+      "id": 1020,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 787.2499429995514,
+      "examined": 3,
+      "doc_ids": [
+        "10559501",
+        "12885341",
+        "9433958"
+      ]
+    },
+    {
+      "id": 1021,
+      "verdict": "insufficient",
+      "gold": "refuted",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 853.5788199997114,
+      "examined": 3,
+      "doc_ids": [
+        "10559501",
+        "6163801",
+        "9433958"
+      ]
+    },
+    {
+      "id": 1024,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 829.444689000411,
+      "examined": 3,
+      "doc_ids": [
+        "14530534",
+        "24995939",
+        "26064942"
+      ]
+    },
+    {
+      "id": 1029,
+      "verdict": "supported",
+      "gold": "refuted",
+      "citations": 1,
+      "matched": 0,
+      "citation_spans": [
+        {
+          "doc_id": "11899391",
+          "start": 0,
+          "end": 299,
+          "stance": "support",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 1059.6626779997678,
+      "examined": 3,
+      "doc_ids": [
+        "11899391",
+        "13923140",
+        "2388819"
+      ]
+    },
+    {
+      "id": 1062,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 701.839155000016,
+      "examined": 3,
+      "doc_ids": [
+        "20381484",
+        "25748308",
+        "32985041"
+      ]
+    },
+    {
+      "id": 1089,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 745.1911119997021,
+      "examined": 3,
+      "doc_ids": [
+        "17628888",
+        "23577014",
+        "7915836"
+      ]
+    },
+    {
+      "id": 1099,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 717.940300999544,
+      "examined": 3,
+      "doc_ids": [
+        "21557614",
+        "22420524",
+        "7454794"
+      ]
+    },
+    {
+      "id": 1100,
+      "verdict": "refuted",
+      "gold": "insufficient",
+      "citations": 1,
+      "matched": 0,
+      "citation_spans": [
+        {
+          "doc_id": "22420524",
+          "start": 115,
+          "end": 278,
+          "stance": "contradict",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 662.8848899999866,
+      "examined": 3,
+      "doc_ids": [
+        "21557614",
+        "22420524",
+        "7662206"
+      ]
+    },
+    {
+      "id": 1104,
+      "verdict": "supported",
+      "gold": "supported",
+      "citations": 1,
+      "matched": 1,
+      "citation_spans": [
+        {
+          "doc_id": "3898784",
+          "start": 1865,
+          "end": 2067,
+          "stance": "support",
+          "gold_sentence_matches": [
+            10
+          ]
+        }
+      ],
+      "latency_ms": 1175.0673480000842,
+      "examined": 3,
+      "doc_ids": [
+        "32328114",
+        "3898784",
+        "4910408"
+      ]
+    },
+    {
+      "id": 1107,
+      "verdict": "supported",
+      "gold": "supported",
+      "citations": 1,
+      "matched": 1,
+      "citation_spans": [
+        {
+          "doc_id": "20532591",
+          "start": 259,
+          "end": 379,
+          "stance": "support",
+          "gold_sentence_matches": [
+            3
+          ]
+        }
+      ],
+      "latency_ms": 625.8936089998315,
+      "examined": 3,
+      "doc_ids": [
+        "14865329",
+        "20532591",
+        "29381091"
+      ]
+    },
+    {
+      "id": 1110,
+      "verdict": "insufficient",
+      "gold": "refuted",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 571.9567860005554,
+      "examined": 3,
+      "doc_ids": [
+        "4345757",
+        "75636923",
+        "756887"
+      ]
+    },
+    {
+      "id": 1130,
+      "verdict": "refuted",
+      "gold": "refuted",
+      "citations": 1,
+      "matched": 1,
+      "citation_spans": [
+        {
+          "doc_id": "17997584",
+          "start": 575,
+          "end": 710,
+          "stance": "contradict",
+          "gold_sentence_matches": [
+            3
+          ]
+        }
+      ],
+      "latency_ms": 604.4316950001303,
+      "examined": 3,
+      "doc_ids": [
+        "14644164",
+        "17997584",
+        "6913227"
+      ]
+    },
+    {
+      "id": 1132,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 619.0334570001141,
+      "examined": 3,
+      "doc_ids": [
+        "24069089",
+        "2825380",
+        "34905328"
+      ]
+    },
+    {
+      "id": 1137,
+      "verdict": "insufficient",
+      "gold": "refuted",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 682.8608429996166,
+      "examined": 3,
+      "doc_ids": [
+        "33370",
+        "470625",
+        "5123516"
+      ]
+    },
+    {
+      "id": 1146,
+      "verdict": "supported",
+      "gold": "supported",
+      "citations": 1,
+      "matched": 1,
+      "citation_spans": [
+        {
+          "doc_id": "13906581",
+          "start": 1853,
+          "end": 1967,
+          "stance": "support",
+          "gold_sentence_matches": [
+            12
+          ]
+        }
+      ],
+      "latency_ms": 846.774366000318,
+      "examined": 3,
+      "doc_ids": [
+        "12789595",
+        "13906581",
+        "43855756"
+      ]
+    },
+    {
+      "id": 1150,
+      "verdict": "refuted",
+      "gold": "supported",
+      "citations": 1,
+      "matched": 0,
+      "citation_spans": [
+        {
+          "doc_id": "9478135",
+          "start": 0,
+          "end": 121,
+          "stance": "contradict",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 763.5441709999213,
+      "examined": 3,
+      "doc_ids": [
+        "11369420",
+        "25832301",
+        "9478135"
+      ]
+    },
+    {
+      "id": 1163,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 718.8673079999717,
+      "examined": 3,
+      "doc_ids": [
+        "15305881",
+        "799586",
+        "8065561"
+      ]
+    },
+    {
+      "id": 1175,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 600.4446549995919,
+      "examined": 3,
+      "doc_ids": [
+        "15419873",
+        "16058322",
+        "5702790"
+      ]
+    },
+    {
+      "id": 1180,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 760.5392520008536,
+      "examined": 3,
+      "doc_ids": [
+        "10627801",
+        "15419873",
+        "44366096"
+      ]
+    },
+    {
+      "id": 1187,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 640.5659050005852,
+      "examined": 3,
+      "doc_ids": [
+        "12737132",
+        "26596106",
+        "52873726"
+      ]
+    },
+    {
+      "id": 1191,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 503.41465399924346,
+      "examined": 3,
+      "doc_ids": [
+        "10827901",
+        "36355784",
+        "36713289"
+      ]
+    },
+    {
+      "id": 1194,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 639.5698460000858,
+      "examined": 3,
+      "doc_ids": [
+        "11419230",
+        "22561064",
+        "24706198"
+      ]
+    },
+    {
+      "id": 1196,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 481.2029140002778,
+      "examined": 3,
+      "doc_ids": [
+        "154243324",
+        "31019903",
+        "33135135"
+      ]
+    },
+    {
+      "id": 1197,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 585.3295570004775,
+      "examined": 3,
+      "doc_ids": [
+        "154243324",
+        "31019903",
+        "33135135"
+      ]
+    },
+    {
+      "id": 1199,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 579.8444989995915,
+      "examined": 3,
+      "doc_ids": [
+        "21557614",
+        "2522977",
+        "7454794"
+      ]
+    },
+    {
+      "id": 1200,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 551.8315350000194,
+      "examined": 3,
+      "doc_ids": [
+        "19313533",
+        "21598000",
+        "26011884"
+      ]
+    },
+    {
+      "id": 1202,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 566.1462099997152,
+      "examined": 3,
+      "doc_ids": [
+        "34615397",
+        "3475317",
+        "9225850"
+      ]
+    },
+    {
+      "id": 1207,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 684.8285400001259,
+      "examined": 3,
+      "doc_ids": [
+        "11951999",
+        "18909530",
+        "735130"
+      ]
+    },
+    {
+      "id": 1213,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 611.601344000519,
+      "examined": 3,
+      "doc_ids": [
+        "17934603",
+        "21498497",
+        "7948486"
+      ]
+    },
+    {
+      "id": 1221,
+      "verdict": "insufficient",
+      "gold": "refuted",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 671.6846409999562,
+      "examined": 3,
+      "doc_ids": [
+        "1836154",
+        "21479575",
+        "4325398"
+      ]
+    },
+    {
+      "id": 1241,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 672.8196240001125,
+      "examined": 3,
+      "doc_ids": [
+        "12411274",
+        "4427392",
+        "6148876"
+      ]
+    },
+    {
+      "id": 1245,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 591.9801539994296,
+      "examined": 3,
+      "doc_ids": [
+        "11748341",
+        "36124058",
+        "49429882"
+      ]
+    },
+    {
+      "id": 1259,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 841.7824079997445,
+      "examined": 3,
+      "doc_ids": [
+        "13069283",
+        "20454006",
+        "24341590"
+      ]
+    },
+    {
+      "id": 1270,
+      "verdict": "refuted",
+      "gold": "refuted",
+      "citations": 1,
+      "matched": 0,
+      "citation_spans": [
+        {
+          "doc_id": "13900610",
+          "start": 1196,
+          "end": 1285,
+          "stance": "contradict",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 617.9803560007713,
+      "examined": 3,
+      "doc_ids": [
+        "13900610",
+        "14843502",
+        "20491205"
+      ]
+    },
+    {
+      "id": 1272,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 532.7462710001782,
+      "examined": 3,
+      "doc_ids": [
+        "15685921",
+        "36860856",
+        "7036529"
+      ]
+    },
+    {
+      "id": 1273,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 584.6354370005429,
+      "examined": 3,
+      "doc_ids": [
+        "11041152",
+        "1684489",
+        "24555417"
+      ]
+    },
+    {
+      "id": 1281,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 587.0786420000513,
+      "examined": 3,
+      "doc_ids": [
+        "29214508",
+        "36233757",
+        "38805486"
+      ]
+    },
+    {
+      "id": 1282,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 550.0342180002917,
+      "examined": 3,
+      "doc_ids": [
+        "1389264",
+        "22482820",
+        "23649163"
+      ]
+    },
+    {
+      "id": 1303,
+      "verdict": "insufficient",
+      "gold": "refuted",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 510.75280199984263,
+      "examined": 3,
+      "doc_ids": [
+        "12631697",
+        "31200375",
+        "52175065"
+      ]
+    },
+    {
+      "id": 1332,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 697.3263390000284,
+      "examined": 3,
+      "doc_ids": [
+        "11233339",
+        "16488405",
+        "25089501"
+      ]
+    },
+    {
+      "id": 1335,
+      "verdict": "refuted",
+      "gold": "supported",
+      "citations": 1,
+      "matched": 0,
+      "citation_spans": [
+        {
+          "doc_id": "27910499",
+          "start": 0,
+          "end": 208,
+          "stance": "contradict",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 680.0577949998114,
+      "examined": 3,
+      "doc_ids": [
+        "27243019",
+        "27910499",
+        "43587663"
+      ]
+    },
+    {
+      "id": 1336,
+      "verdict": "supported",
+      "gold": "refuted",
+      "citations": 2,
+      "matched": 0,
+      "citation_spans": [
+        {
+          "doc_id": "27910499",
+          "start": 0,
+          "end": 208,
+          "stance": "support",
+          "gold_sentence_matches": []
+        },
+        {
+          "doc_id": "43587663",
+          "start": 116,
+          "end": 362,
+          "stance": "support",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 656.3027149995833,
+      "examined": 3,
+      "doc_ids": [
+        "27243019",
+        "27910499",
+        "43587663"
+      ]
+    },
+    {
+      "id": 1352,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 651.7975789993216,
+      "examined": 3,
+      "doc_ids": [
+        "10559501",
+        "10648422",
+        "12885341"
+      ]
+    },
+    {
+      "id": 1368,
+      "verdict": "refuted",
+      "gold": "supported",
+      "citations": 1,
+      "matched": 0,
+      "citation_spans": [
+        {
+          "doc_id": "8856690",
+          "start": 0,
+          "end": 148,
+          "stance": "contradict",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 794.4901890004985,
+      "examined": 3,
+      "doc_ids": [
+        "13312471",
+        "23267371",
+        "8856690"
+      ]
+    },
+    {
+      "id": 1385,
+      "verdict": "insufficient",
+      "gold": "supported",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 509.9278140005481,
+      "examined": 3,
+      "doc_ids": [
+        "15960670",
+        "306006",
+        "9283422"
+      ]
+    },
+    {
+      "id": 1389,
+      "verdict": "supported",
+      "gold": "supported",
+      "citations": 1,
+      "matched": 0,
+      "citation_spans": [
+        {
+          "doc_id": "23895668",
+          "start": 129,
+          "end": 305,
+          "stance": "support",
+          "gold_sentence_matches": []
+        }
+      ],
+      "latency_ms": 587.3077440000998,
+      "examined": 3,
+      "doc_ids": [
+        "14874811",
+        "23895668",
+        "30774694"
+      ]
+    },
+    {
+      "id": 1395,
+      "verdict": "insufficient",
+      "gold": "insufficient",
+      "citations": 0,
+      "matched": 0,
+      "citation_spans": [],
+      "latency_ms": 542.5722420004604,
+      "examined": 3,
+      "doc_ids": [
+        "17717391",
+        "19343151",
+        "26008462"
+      ]
+    }
+  ]
+}

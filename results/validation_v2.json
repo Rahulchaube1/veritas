@@ -1,0 +1,23 @@
+{
+  "release": "0.2.0",
+  "runtime": "Python 3.12.14, Linux x86_64, CPU",
+  "tests": {
+    "passed": 73,
+    "failed": 0,
+    "skipped": 0,
+    "covered_statements": 966,
+    "total_statements": 1012
+  },
+  "optional_model_tests_executed": [
+    "v0.1 gated neural profile",
+    "v0.2 scientific profile"
+  ],
+  "other_checks": [
+    "Ruff lint and formatting",
+    "mypy src/veritas",
+    "Bandit high severity",
+    "wheel and sdist build",
+    "local Jupyter CPU execution of the new notebook with LAUNCH_UI=False"
+  ],
+  "scope": "The user reported a successful v0.1.0 Colab run. v0.2.0 notebook execution was checked locally. Unit and integration tests measure software behavior. Scientific accuracy is measured separately in scientific_172_summary.json."
+}

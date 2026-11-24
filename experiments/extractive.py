@@ -59,11 +59,11 @@ def main():
     write("results/extractive_baselines.json", results)
 
 
-def crowding():
+def crowding(diverse=False):
     records = []
     for n in [1, 2, 4, 8, 16]:
         for budget in [1, 2, 5]:
-            e = Veritas(Config(page_size=2))
+            e = Veritas(Config(page_size=2, diverse_candidates=diverse))
             claim = "The ferry carries 40 passengers."
             e.add(
                 [dict(id="primary", text=claim, title="Survey record")]
@@ -87,9 +87,11 @@ def crowding():
                 )
             )
             e.close()
-    write("results/candidate_crowding.json", records)
+    name = "candidate_crowding_diverse" if diverse else "candidate_crowding"
+    write(f"results/{name}.json", records)
 
 
 if __name__ == "__main__":
     main()
     crowding()
+    crowding(diverse=True)

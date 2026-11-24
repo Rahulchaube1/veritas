@@ -10,6 +10,7 @@ from pathlib import Path
 import numpy as np
 import yaml
 
+from . import joins
 from .neural import Encoder
 from .provenance import graph
 from .retrieval import Index, tokens
@@ -33,7 +34,12 @@ class Veritas:
         self.index: Index | None = None
         self.neural = {}
         if self.config.model_dir:
-            self.neural = {name: Encoder(self.config.model_dir / name) for name in ["dense", "nli", "rerank"]}
+            nli_directory = "scientific_nli" if self.config.scientific_evidence else "nli"
+            self.neural = {
+                "dense": Encoder(self.config.model_dir / "dense"),
+                "rerank": Encoder(self.config.model_dir / "rerank"),
+                "nli": Encoder(self.config.model_dir / nli_directory),
+            }
         self.weights = self._load(self.config.ranker)
         self.cal = self._load(self.config.calibration)
         self.gate = self._load(self.config.rationale_gate)
@@ -190,8 +196,11 @@ class Veritas:
         cap = min(req.max_search_steps, self.config.max_steps)
         page = self.config.page_size
         resolved = not slot
+        relation_query = joins.parse_request(claim)
+        direct_evidence: list[Evidence] = []
         seen = set()
         collected: dict[str, Hit] = {}
+        reviewed_content: set[tuple[bytes, str]] = set()
         for step in range(cap):
             if unsupported:
                 break
@@ -206,16 +215,35 @@ class Veritas:
                 # One new retrieval round. Reference edges get first access to its page budget.
                 extra = [w for w in tokens(docs[0].title) if w not in set(tokens(query))][:4]
                 lookup = " ".join([query, *extra])[:1600]
-            hits = self.retrieve(lookup, page * (step + 1), mode)
+            depth = page * (step + 1)
+            if self.config.diverse_candidates:
+                depth = max(32, depth)
+            hits = self.retrieve(lookup, depth, mode)
             if linked:
                 direct = [Hit(doc_id=ref, score=0, features={"citation_hop": 1.0}) for ref in linked[:page]]
                 hits = direct + [h for h in hits if h.doc_id not in linked]
 
             batch = [h for h in hits if h.doc_id not in seen]
+            if self.config.diverse_candidates:
+                assert self.index is not None
+                first: list[Hit] = []
+                repeats: list[Hit] = []
+                keys = set(reviewed_content)
+                for h in batch:
+                    key = (self.index.content_keys[h.doc_id], temporal(self.docs[h.doc_id], when, scoped))
+                    (repeats if key in keys else first).append(h)
+                    keys.add(key)
+                batch = first + repeats
             batch = batch[:page]
+            if self.config.diverse_candidates:
+                assert self.index is not None
+                reviewed_content.update(
+                    (self.index.content_keys[h.doc_id], temporal(self.docs[h.doc_id], when, scoped))
+                    for h in batch
+                )
             collected.update({h.doc_id: h for h in batch})
             actions.append(
-                f"retrieve top {page * (step + 1)}; inspect {len(batch)} new documents"
+                f"retrieve top {depth}; inspect {len(batch)} new documents"
                 + (f"; citation hops {len(linked[:page])}" if linked else "")
             )
             for hit in batch:
@@ -242,21 +270,29 @@ class Veritas:
                     claim = next(iter(candidates.values()))
                     resolved = True
             if resolved:
-                done = {e.doc_id for e in evidence}
+                done = {e.doc_id for e in direct_evidence}
                 for hit in collected.values():
                     if hit.doc_id not in done:
-                        evidence.extend(
+                        direct_evidence.extend(
                             analyze(
                                 claim,
                                 self.docs[hit.doc_id],
                                 hit,
                                 when,
                                 scoped,
-                                self.neural.get("nli"),
+                                self.neural.get("nli") if not relation_query else None,
                                 use_time,
                                 self.gate,
+                                self.neural.get("rerank") if self.config.scientific_evidence else None,
                             )
                         )
+                evidence = direct_evidence
+                if relation_query:
+                    derived = joins.infer(relation_query, docs, collected, when, scoped, use_time)
+                    replaced = {(e.doc_id, e.start, e.end) for e in derived}
+                    evidence = [
+                        e for e in direct_evidence if (e.doc_id, e.start, e.end) not in replaced
+                    ] + derived
                 groups, edges = graph(docs)
                 verdict, margin = summarize(evidence, groups, dependency, conflict)
             pending_link = req.follow_links and any(
@@ -267,6 +303,7 @@ class Veritas:
             if (
                 adaptive
                 and not slot
+                and not relation_query
                 and step >= 1
                 and verdict in {"supported", "refuted"}
                 and abs(margin) >= 0.65
@@ -305,6 +342,20 @@ class Veritas:
                 and not DIRECTIVE.search(e.passage)
             )
         ]
+        if any(evidence[i].premises for i in citations):
+            locations = {
+                (e.doc_id, e.start, e.end): i
+                for i, e in enumerate(evidence)
+                if e.method == "relation_premise"
+                and e.temporal in {"in_interval", "unspecified"}
+                and self.docs[e.doc_id].text[e.start : e.end] == e.passage
+            }
+            complete = []
+            for i in citations:
+                required_spans = [(ref.doc_id, ref.start, ref.end) for ref in evidence[i].premises]
+                if all(key in locations for key in required_spans):
+                    complete.extend([*(locations[key] for key in required_spans), i])
+            citations = list(dict.fromkeys(complete))
         if desired and not citations:
             verdict = "insufficient"
         answered = verdict in {"supported", "refuted"}

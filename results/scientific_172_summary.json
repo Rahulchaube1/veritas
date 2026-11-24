@@ -1,0 +1,35 @@
+{
+  "baseline": {
+    "queries": 172,
+    "correct_all": 84,
+    "answered": 33,
+    "correct_decisive": 22,
+    "wrong_decisive": 11,
+    "grounded_correct": 9,
+    "citations": 37,
+    "matched_citations": 9,
+    "latency_ms_p50_p95": [
+      570.9390219999477,
+      717.8885326995896
+    ]
+  },
+  "revised": {
+    "queries": 172,
+    "correct_all": 93,
+    "answered": 53,
+    "correct_decisive": 34,
+    "wrong_decisive": 19,
+    "grounded_correct": 18,
+    "citations": 62,
+    "matched_citations": 18,
+    "latency_ms_p50_p95": [
+      716.1610694997762,
+      1052.9862631996818
+    ]
+  },
+  "paired_correctness": {
+    "gains": 23,
+    "losses": 14,
+    "exact_two_sided_p": 0.18774155899882317
+  }
+}
